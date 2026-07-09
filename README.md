@@ -6,8 +6,7 @@
 
 ---
 
-## 🔗 Live & Links
-*   **Live Demo:** [bmsdigitalsolutions.com/demos/zentra/](https://bmsdigitalsolutions.com/demos/zentra/) *(Demo location on portfolio hub)*
+## 🔗 Links
 *   **Tech Stack:** Node.js, Custom CSV Stream Parser, SQLite, Vanilla HTML5, CSS3, ES6+ Javascript, Python (asset optimization)
 
 ---
