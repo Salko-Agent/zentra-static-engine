@@ -14,17 +14,17 @@
 
 ## 💡 Project Overview
 
-### ❌ Was war das Problem?
-Klassische, datenbankgestützte Affiliate- und Vergleichsportale sind bei steigenden Produktzahlen oft träge, teuer im Serverunterhalt und anfällig für Sicherheitslücken. Dynamische Datenbankabfragen bei jedem Seitenaufruf verlangsamen die Ladezeiten, was sich negativ auf die Conversion-Rate und das Google SEO-Ranking (Core Web Vitals) auswirkt.
+### ❌ The Challenge
+Database-backed affiliate and price-comparison portals are often sluggish, expensive to host, and vulnerable to security exploits at scale. Querying databases dynamically for thousands of items on every page visit slows load speeds, negatively impacting conversion rates and Google Core Web Vitals SEO rankings.
 
-### 🛠️ Was habe ich gebaut?
-Eine **compiler-basierte statische Engine**, die große CSV-Feeds (z. B. Awin mit über 140.000 Produkten) offline einliest, normalisiert und direkt in ein voll funktionsfähiges, statisches HTML/CSS-Verzeichnis kompiliert (über 2.300 Detail- und Kategorieseiten). Dadurch wird der Server zur reinen Datei-Auslieferung genutzt – mit Ladezeiten im Millisekundenbereich und 0 % Datenbanklast.
+### 🛠️ The Solution
+A **compiler-based static engine** that processes large CSV product feeds (such as Awin with over 140k items) offline, normalizes them, and builds a fully flat static HTML/CSS directory containing over 2,300 category and product pages. The live site is served purely as static files, resulting in sub-millisecond load times and zero database load.
 
-### 🌟 Was ist besonders?
-*   **⚡ Memory-Efficient Stream Parsing:** Ein maßgeschneiderter Zeilen-Streaming-Parser verarbeitet 220MB+ große CSV-Feeds speicherschonend in Node.js, ohne den RAM zu überlasten.
-*   **📈 Rich-Snippet Automatisierung:** Jede generierte statische HTML-Seite erhält beim Build-Prozess automatisch valide JSON-LD Metadaten (Breadcrumbs, Product, FAQ und CollectionPage Schemas) für maximale Sichtbarkeit in den Google-Suchergebnissen.
-*   **🚀 100/100 Core Web Vitals:** Die generierten Seiten nutzen DNS-Prefetching für externe Assets, preloaded critical CSS, asynchron geladene Webfonts und aufgeschobene JS-Ausführung, um maximale Ladegeschwindigkeiten zu garantieren.
-*   **🔒 Keine Datenbank-Sicherheitsrisiken:** Da im Live-Betrieb keine Datenbank genutzt wird, sind SQL-Injections, Serverabstürze und Datenlecks im Frontend technisch ausgeschlossen.
+### 🌟 Key Highlights
+*   **⚡ Memory-Efficient Stream Parsing:** A custom streaming line-by-line parser reads massive 220MB+ CSV datafeeds in Node.js without exceeding memory constraints or crashing the engine.
+*   **📈 Rich-Snippet Automation:** The compilation script injects structured JSON-LD microdata (valide Breadcrumbs, Product, FAQ, and CollectionPage schemas) into each page for Google Search listing prominence.
+*   **🚀 100/100 Core Web Vitals:** Outputs code with DNS-prefetch tags, critical inline CSS, deferred script execution, and preloaded fonts to maximize loading speed.
+*   **🔒 Complete Zero-DB Security:** Serving pure static files eliminates SQL injections, server-side code execution bugs, and database connection downtime completely.
 
 ---
 
