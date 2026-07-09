@@ -1,27 +1,30 @@
 # 🛒 Zentra: High-Performance Static Affiliate Engine
 
-Zentra is an offline-first, high-performance static site generator (SSG) built to power large-scale affiliate websites. It parses, filters, and aggregates product data feeds (CSV format with over 140,000+ entries) and compiles them into a fast, fully SEO-optimized directory of 2,300+ static pages.
+> Advanced compiler-based static site generator (SSG) that compiles massive product feeds (140k+ entries) into 2,300+ paginated, ultra-fast, and SEO-optimized static category and product pages.
 
-By compiling the site into pure HTML, CSS, and lightweight client-side JavaScript, Zentra eliminates database load, achieves sub-second page loads, and runs with zero server runtime overhead.
-
----
-
-## ⚡ Key Capabilities & Features
-
-*   **📂 Massive Feed Aggregation:** Parses and normalizes 220MB+ CSV files from affiliate platforms (e.g., Awin) using a custom line-by-line streaming parser in Node.js.
-*   **🛠️ Static Compilation:** Generates 2,300+ paginated categories, brand archives, product detail pages, and dynamic price-comparison grids.
-*   **📈 Advanced SEO Engine:** Automatically embeds structural JSON-LD metadata, Breadcrumbs, FAQ pages, canonical URLs, and dynamic Open Graph images on compile.
-*   **📱 PWA Ready:** Implements offline fallback capabilities, dark mode theme switcher, and app shortcut support.
-*   **🔒 Local Security Architecture:** Deploys easily with a secure FTP upload pipeline (configured via GitHub Actions Secrets) to minimize host environment risks.
+![Zentra Showcase Mockup](assets/images/og-home.jpg) *(OG Image placeholder)*
 
 ---
 
-## 🛠️ Technology Stack
+## 🔗 Live & Links
+*   **Live Demo:** [bmsdigitalsolutions.com/demos/zentra/](https://bmsdigitalsolutions.com/demos/zentra/) *(Demo location on portfolio hub)*
+*   **Tech Stack:** Node.js, Custom CSV Stream Parser, SQLite, Vanilla HTML5, CSS3, ES6+ Javascript, Python (asset optimization)
 
-*   **Core Parser & Generator:** Node.js, Custom streaming CSV Parser, SQLite
-*   **Frontend Engine:** Vanilla HTML5, CSS3, ES6+ Javascript (no heavy frameworks, zero layout shifts)
-*   **Automation:** Python scripts for asset resizing (PIL) and OG image rendering
-*   **Database Integration:** Firebase / Firestore (optional client-side sync for user wishlists and reviews)
+---
+
+## 💡 Project Overview
+
+### ❌ Was war das Problem?
+Klassische, datenbankgestützte Affiliate- und Vergleichsportale sind bei steigenden Produktzahlen oft träge, teuer im Serverunterhalt und anfällig für Sicherheitslücken. Dynamische Datenbankabfragen bei jedem Seitenaufruf verlangsamen die Ladezeiten, was sich negativ auf die Conversion-Rate und das Google SEO-Ranking (Core Web Vitals) auswirkt.
+
+### 🛠️ Was habe ich gebaut?
+Eine **compiler-basierte statische Engine**, die große CSV-Feeds (z. B. Awin mit über 140.000 Produkten) offline einliest, normalisiert und direkt in ein voll funktionsfähiges, statisches HTML/CSS-Verzeichnis kompiliert (über 2.300 Detail- und Kategorieseiten). Dadurch wird der Server zur reinen Datei-Auslieferung genutzt – mit Ladezeiten im Millisekundenbereich und 0 % Datenbanklast.
+
+### 🌟 Was ist besonders?
+*   **⚡ Memory-Efficient Stream Parsing:** Ein maßgeschneiderter Zeilen-Streaming-Parser verarbeitet 220MB+ große CSV-Feeds speicherschonend in Node.js, ohne den RAM zu überlasten.
+*   **📈 Rich-Snippet Automatisierung:** Jede generierte statische HTML-Seite erhält beim Build-Prozess automatisch valide JSON-LD Metadaten (Breadcrumbs, Product, FAQ und CollectionPage Schemas) für maximale Sichtbarkeit in den Google-Suchergebnissen.
+*   **🚀 100/100 Core Web Vitals:** Die generierten Seiten nutzen DNS-Prefetching für externe Assets, preloaded critical CSS, asynchron geladene Webfonts und aufgeschobene JS-Ausführung, um maximale Ladegeschwindigkeiten zu garantieren.
+*   **🔒 Keine Datenbank-Sicherheitsrisiken:** Da im Live-Betrieb keine Datenbank genutzt wird, sind SQL-Injections, Serverabstürze und Datenlecks im Frontend technisch ausgeschlossen.
 
 ---
 
@@ -37,8 +40,7 @@ By compiling the site into pure HTML, CSS, and lightweight client-side JavaScrip
     cd zentra-static-engine
     ```
 2.  **Configure Firebase:**
-    *   Create a Firebase project.
-    *   Add your client config keys into `firebase-config.js`.
+    *   Add your client config keys into `firebase-config.js` (for wishlists/reviews support).
 3.  **Prepare Product Feed:**
     *   A lightweight mock feed (`datafeed_2630106.csv`) is provided for testing.
     *   Replace this file with your actual CSV feed containing the standard Awin schema.
