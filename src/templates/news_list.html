@@ -1,0 +1,384 @@
+<div class="container mt-60">
+
+    <!-- Hero / Featured (Optional: could be dynamic) -->
+    <div class="mb-60">
+        <h1 class="gradient-text mb-20" style="font-size: 3.5rem; letter-spacing: -1px;">{{ title }}</h1>
+        <p class="text-muted" style="font-size: 1.25rem; max-width: 600px;">{{ description }}</p>
+    </div>
+
+    <!-- Search Bar (Styled) -->
+    <div class="mb-40 flex-between" style="flex-wrap: wrap; gap: 20px;">
+        <div class="glass-panel p-10 flex items-center"
+            style="max-width: 400px; width: 100%; border-radius: 50px; background: rgba(255,255,255,0.03);">
+            <i class="fas fa-search text-muted ml-15"></i>
+            <input type="text" id="news-search" placeholder="Search insights..."
+                style="width: 100%; padding: 12px 15px; background: transparent; border: none; color: white; font-size: 1rem; outline: none;">
+        </div>
+
+        <!-- Quick Filters -->
+        <div class="flex" style="gap: 10px;">
+            <button class="btn btn-secondary small filter-btn active" data-filter="all">ALL</button>
+            <button class="btn btn-secondary small filter-btn" data-filter="hardware">HARDWARE</button>
+            <button class="btn btn-secondary small filter-btn" data-filter="software">SOFTWARE</button>
+            <button class="btn btn-secondary small filter-btn" data-filter="ai">AI</button>
+        </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="no-results" class="glass-panel p-40 mb-40 hidden text-center">
+        <p class="text-muted" style="font-size: 1.1rem;">❌ No intel found. Try adjusting your calibration.</p>
+    </div>
+
+    <!-- News Grid (CSS Grid) -->
+    <div id="news-feed" class="news-grid-layout"
+        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
+        {{ news_grid }}
+    </div>
+
+    <div class="pagination mt-60 mb-60 flex-center">
+        {{ pagination }}
+    </div>
+</div>
+
+<style>
+    /* CSS Grid Layout */
+    .news-grid-layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    /* Card Styling (Polished) */
+    .news-card {
+        background: rgba(25, 25, 30, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .news-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1);
+    }
+
+    .news-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+    .news-card:hover img {
+        opacity: 1;
+    }
+
+    .news-card-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .news-card-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 15px;
+        font-family: var(--font-mono);
+    }
+
+    .news-card-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        line-height: 1.4;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .news-card-excerpt {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        line-height: 1.6;
+        flex-grow: 1;
+    }
+
+    .news-read-more {
+        align-self: flex-start;
+        font-size: 0.9rem;
+        color: var(--accent-cyan);
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .news-read-more:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .news-grid-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .flex-between[style*="flex-wrap: wrap"] {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .glass-panel[style*="max-width: 400px"] {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<style>
+    /* Responsive Stack */
+    @media (max-width: 900px) {
+        .grid[style*="grid-template-columns: 3fr 1.2fr"] {
+            grid-template-columns: 1fr !important;
+        }
+
+        aside {
+            position: relative !important;
+            top: 0 !important;
+        }
+    }
+
+    /* Topic/Sector Hover Effects */
+    .topic-filter:hover,
+    .sector-filter:hover {
+        background: rgba(0, 240, 255, 0.1) !important;
+        border-left: 3px solid var(--accent-cyan);
+        padding-left: 13px !important;
+    }
+
+    .topic-filter.active,
+    .sector-filter.active {
+        background: rgba(0, 240, 255, 0.15) !important;
+        border-left: 3px solid var(--accent-cyan);
+    }
+</style>
+
+<script>
+    // Search Functionality
+    const searchInput = document.getElementById('news-search');
+    const newsCards = document.querySelectorAll('.news-card, .featured-news');
+    const noResults = document.getElementById('no-results');
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        let visibleCount = 0;
+
+        newsCards.forEach(card => {
+            const title = card.querySelector('h2, h3, h4')?.textContent.toLowerCase() || '';
+            const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+
+            if (title.includes(query) || desc.includes(query)) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.classList.toggle('hidden', visibleCount > 0);
+    });
+
+    // Topic Filter
+    const topicFilters = document.querySelectorAll('.topic-filter');
+    topicFilters.forEach(filter => {
+        filter.addEventListener('click', function () {
+            const topic = this.dataset.topic.toLowerCase();
+
+            // Toggle active class
+            this.classList.toggle('active');
+
+            // Filter articles
+            newsCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(topic)) {
+                    card.style.display = '';
+                }
+            });
+        });
+    });
+
+    // Sector Filter
+    const sectorFilters = document.querySelectorAll('.sector-filter');
+    sectorFilters.forEach(filter => {
+        filter.addEventListener('click', function () {
+            const sector = this.dataset.sector.toLowerCase();
+
+            // Toggle active class
+            sectorFilters.forEach(f => f.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter articles
+            let visibleCount = 0;
+            newsCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(sector)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.classList.toggle('hidden', visibleCount > 0);
+        });
+    });
+</script>
+
+<footer style="background: linear-gradient(180deg, rgba(19, 19, 22, 0.95) 0%, rgba(10, 10, 15, 0.98) 100%); border-top: 1px solid rgba(0, 240, 255, 0.1); margin-top: 80px; padding: 60px 0 30px 0;">
+    <div class="container">
+        <!-- Main Footer Content -->
+        <div class="grid" style="grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;">
+            
+            <!-- Brand Column -->
+            <div>
+                <div class="footer-logo" style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #ffffff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0;">
+                        ZENTRA<span style="color: var(--accent-cyan);">.SERVICES</span>
+                    </h3>
+                </div>
+                <p class="text-muted" style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px; max-width: 320px;">
+                    The curated ecosystem for verified hardware, precision makers, and tech intelligence. Built by professionals, for professionals.
+                </p>
+                <div class="social-links" style="display: flex; gap: 15px; margin-top: 25px;">
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-twitter" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-linkedin" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-github" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-discord" style="font-size: 1.1rem;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Platform Links -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-rocket" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    PLATFORM
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/news/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-newspaper" style="width: 16px;"></i> Tech Intel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/produkte/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-box-open" style="width: 16px;"></i> Supply Depot
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/b2b.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-briefcase" style="width: 16px;"></i> B2B Solutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/newsletter.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-envelope" style="width: 16px;"></i> Newsletter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Resources -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-book" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    RESOURCES
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/about.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-info-circle" style="width: 16px;"></i> About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/kontakt.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-headset" style="width: 16px;"></i> Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/faq.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-question-circle" style="width: 16px;"></i> FAQ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Legal -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-shield-alt" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    LEGAL
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/datenschutz.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-user-shield" style="width: 16px;"></i> Privacy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/impressum.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-gavel" style="width: 16px;"></i> Impressum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/affiliate-offenlegung.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-file-contract" style="width: 16px;"></i> Disclosure
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div style="border-top: 1px solid rgba(0, 240, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-copyright"></i>
+                <span>2025 BMS Digital Solutions. All Rights Reserved.</span>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">Made with</span>
+                <i class="fas fa-heart" style="color: #ff6ec7; font-size: 0.9rem; animation: heartbeat 1.5s ease-in-out infinite;"></i>
+                <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">in Austria</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    @keyframes heartbeat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+    @media (max-width: 1024px) {
+        footer .grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 640px) {
+        footer .grid { grid-template-columns: 1fr !important; }
+    }
+</style>

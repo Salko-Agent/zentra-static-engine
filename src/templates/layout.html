@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Zentra.Services</title>
+    <meta name="description" content="{{ description }}">
+    
+    <!-- Existing Styles -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- New Static Styles (Merged or Specific) -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    {{ head_extra }}
+</head>
+<body>
+    <!-- Loading Screen (Legacy Support) -->
+    <div id="loading-screen" class="loading-screen" style="display:none;"> <!-- Hidden by default for static pages -->
+        <div class="loader-content">
+            <div class="loader-logo">Zentra.Services</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Background (Legacy) -->
+    <canvas id="particle-canvas"></canvas>
+    <!-- New Particles (Optional, can disable if using old canvas) -->
+    <!-- <div class="particles"></div> -->
+
+    <!-- Navigation -->
+    <nav class="nav-bar glass-panel" role="navigation" aria-label="Main navigation">
+        <a href="/" class="logo animated-logo" style="text-decoration:none;">Zentra.Services</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/community.html">Community</a>
+            <a href="/produkte/" class="active">Produkte</a>
+            <a href="/news.html">News</a>
+        </div>
+        <div class="nav-actions">
+            <button id="login-btn" class="btn-primary">Login</button>
+            <div id="user-profile" class="hidden">
+                <img id="user-avatar" src="" alt="User">
+                <span id="user-name"></span>
+                <button id="logout-btn" class="btn-secondary small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 2rem; min-height: 80vh;">
+        {{ content }}
+    </main>
+
+    <footer role="contentinfo" style="margin-top: 4rem; padding: 2rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p>&copy; 2025 Zentra. Built by BMS Digital Solutions. Premium tech deals, expert community, and curated industry news.</p>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Legacy Scripts -->
+    <script type="module" src="/script.js"></script>
+    <!-- New Static Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

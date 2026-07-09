@@ -1,0 +1,147 @@
+<div class="container mt-40">
+    <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 40px;">
+
+        <!-- Main Stream -->
+        <div class="network-stream">
+            <div class="flex-between mb-40">
+                <h1 class="gradient-text">NETWORK STREAM</h1>
+                <a href="/network/create" class="btn btn-primary small">+ LOG PROJECT</a>
+            </div>
+
+            <div id="network-feed" class="flex-col" style="gap: 40px;">
+                <div class="glass-panel p-20 mb-20">
+                    <div class="flex items-center gap-10 mb-10">
+                        <div class="skeleton-pulse"
+                            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05);">
+                        </div>
+                        <div class="skeleton-pulse"
+                            style="width: 120px; height: 14px; background: rgba(255,255,255,0.05); border-radius: 4px;">
+                        </div>
+                    </div>
+                    <div class="skeleton-pulse"
+                        style="width: 60%; height: 20px; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 10px;">
+                    </div>
+                    <div class="skeleton-pulse"
+                        style="width: 100%; height: 100px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+                    </div>
+                </div>
+                <style>
+                    .skeleton-pulse {
+                        animation: pulse 1.5s infinite ease-in-out;
+                        background: rgba(255, 255, 255, 0.05);
+                    }
+
+                    @keyframes pulse {
+                        0% {
+                            opacity: 0.6;
+                        }
+
+                        50% {
+                            opacity: 1;
+                        }
+
+                        100% {
+                            opacity: 0.6;
+                        }
+                    }
+                </style>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="network-sidebar">
+            <div class="card p-20 mb-20 sticky" style="top: 100px;">
+                <h3 class="mb-20 text-sm text-secondary">TRENDING TAGS</h3>
+                <div class="flex flex-wrap" style="gap: 10px;" id="network-tags">
+                    <span class="badge hover-scale cursor-pointer"
+                        onclick="filterTag('watercooling')">#watercooling</span>
+                    <span class="badge hover-scale cursor-pointer" onclick="filterTag('mechanic')">#mechanic</span>
+                    <span class="badge hover-scale cursor-pointer" onclick="filterTag('gundam')">#gundam</span>
+                    <span class="badge hover-scale cursor-pointer" onclick="filterTag('3dprinting')">#3dprinting</span>
+                    <span class="badge hover-scale cursor-pointer" onclick="filterTag(null)">#ALL</span>
+                </div>
+            </div>
+
+            <div class="card p-20 glass-panel">
+                <h3 class="mb-10 text-sm text-secondary">YOUR STATS</h3>
+                <div class="flex-between mb-5">
+                    <span class="text-sm text-muted">Reputation</span>
+                    <span class="text-cyan">0</span>
+                </div>
+                <div class="flex-between">
+                    <span class="text-sm text-muted">Logs</span>
+                    <span class="text-white">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { Community } from '/assets/js/community.js';
+    import { Auth } from '/assets/js/auth.js';
+
+    Auth.init();
+
+    // Global Tag Filter
+    window.filterTag = function (tag) {
+        // UI Highlight
+        document.querySelectorAll('#network-tags span').forEach(s => s.style.borderColor = 'var(--border-glass)');
+        if (event && event.target) event.target.style.borderColor = 'var(--accent-cyan)';
+
+        loadFeed(tag);
+    }
+
+    async function loadFeed(tag = null) {
+        const container = document.getElementById('network-feed');
+        container.innerHTML = `
+            <div class="glass-panel p-20 mb-20 animate-pulse">
+                <div style="height: 20px; width: 40%; background: rgba(255,255,255,0.05); border-radius: 4px; mb-10"></div>
+                <div style="height: 100px; width: 100%; background: rgba(255,255,255,0.05); border-radius: 4px;"></div>
+            </div>`;
+
+        try {
+            const posts = await Community.getFeed(tag);
+
+            if (posts.length === 0) {
+                container.innerHTML = '<div class="text-center p-40 text-muted">No signals found for this frequency.</div>';
+                return;
+            }
+
+            container.innerHTML = posts.map(post => `
+                <article class="card p-30 hover-glow">
+                    <div class="flex-center justify-start mb-20" style="gap: 15px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #222; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-glass);">
+                             <img src="${post.authorAvatar || '/assets/images/user_placeholder.png'}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23333%22/><text x=%2250%22 y=%2250%22 font-family=%22monospace%22 font-size=%2250%22 fill=%22%23666%22 text-anchor=%22middle%22 dy=%22.3em%22>?</text></svg>'">
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-white">${post.authorName || 'Anonymous Operator'}</div>
+                            <div class="text-xs text-muted">Active recently</div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mb-15" style="font-size: 1.4rem;">${post.title}</h2>
+                    
+                    ${post.image ? `<div class="mb-20" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--border-glass);"><img src="${post.image}" style="width: 100%; display: block;"></div>` : ''}
+                    
+                    <p class="text-muted mb-20" style="font-family: var(--font-body); line-height: 1.6;">${post.content}</p>
+                    
+                    <div class="flex-between" style="border-top: 1px solid var(--border-glass); padding-top: 15px; margin-top: 20px;">
+                        <div class="flex" style="gap: 10px;">
+                            ${(post.tags || []).map(t => `<span class="badge text-xs opacity-70">#${t}</span>`).join('')}
+                        </div>
+                        <div class="flex" style="gap: 10px;">
+                             <button class="btn btn-secondary small text-xs"><i class="fas fa-bolt"></i> ACCESS</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+        } catch (err) {
+            console.error(err);
+            container.innerHTML = '<div class="text-center text-amber">Signal Interference. Retrying...</div>';
+        }
+    }
+
+    loadFeed();
+</script>

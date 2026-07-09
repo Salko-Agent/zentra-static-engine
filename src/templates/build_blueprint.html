@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9641197173417820" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="nav-bar glass-panel">
+        <a href="/index.html" class="logo animated-logo">Zentra<span>.Services</span></a>
+        <div class="nav-links">
+            <a href="/index.html">HUB</a>
+            <a href="/produkte/computing-workstation/index.html">COMPUTING</a>
+            <a href="/builds/index.html">BUILDS</a>
+            <a href="/news/index.html">INTEL</a>
+        </div>
+    </nav>
+
+    <main class="container mt-60 mb-60">
+        
+        <!-- Header -->
+        <header class="text-center mb-60">
+            <div class="badge-pill mb-4">{{BUILD_TYPE}}</div>
+            <h1 class="gradient-text mb-4" style="font-size: 3rem;">{{BUILD_NAME}}</h1>
+            <p class="text-muted text-lg max-w-2xl mx-auto">{{INTRO_TEXT}}</p>
+            
+            <div class="flex-center mt-6 gap-6 text-xl font-mono">
+                <span class="text-white"><i class="fas fa-coins text-cyan"></i> ~{{TOTAL_PRICE}} €</span>
+                <span class="text-white"><i class="fas fa-tachometer-alt text-green-400"></i> {{PERFORMANCE_TIER}}</span>
+            </div>
+        </header>
+
+        <!-- Build Table -->
+        <div class="build-blueprint glass-panel p-0 overflow-hidden mb-60">
+            <div class="bg-glass-dark p-4 border-b border-glass flex-between">
+                <span class="font-mono text-cyan">SYSTEM CONFIGURATION ID: {{BUILD_ID}}</span>
+                <span class="text-xs text-muted">VERIFIED AVAILABLE</span>
+            </div>
+            
+            <div class="components-list">
+                {{COMPONENTS_HTML}}
+            </div>
+            
+            <div class="p-6 bg-glass-dark text-center border-t border-glass">
+                <p class="text-sm text-muted mb-4">*Prices are subject to change. Parts sourced from verified partners.</p>
+                <div class="flex-center gap-4">
+                    <a href="#affiliate-disclaimer" class="text-xs text-muted hover:text-white">Review Disclaimer</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy Section -->
+        <div class="grid grid-cols-2 gap-8 mb-60">
+             <div class="glass-panel p-6">
+                 <h3 class="text-white mb-4"><i class="fas fa-chess-knight text-cyan"></i> The Strategy</h3>
+                 <p class="text-muted leading-relaxed">
+                     This build focuses on <strong>{{FOCUS_COMPONENT}}</strong> performance. We allocated {{GPU_ALLOCATION}}% of the budget to the graphics unit to ensure maximum frame rates, while maintaining a stable platform with the {{CPU_MODEL}}.
+                 </p>
+             </div>
+             <div class="glass-panel p-6">
+                 <h3 class="text-white mb-4"><i class="fas fa-level-up-alt text-green-400"></i> Upgrade Path</h3>
+                 <p class="text-muted leading-relaxed">
+                     If you have +200€ budget, consider upgrading the <strong>GPU</strong> to the next tier. The selected Power Supply ({{PSU_WATTS}}) has enough headroom to support future upgrades.
+                 </p>
+             </div>
+        </div>
+
+    </main>
+
+    <footer class="container text-center text-muted text-sm py-8 border-t border-glass">
+        <p id="affiliate-disclaimer">Zentra Services participates in affiliate programs. We may earn a commission on links in this build guide.</p>
+        <p>&copy; {{YEAR}} Zentra Services</p>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

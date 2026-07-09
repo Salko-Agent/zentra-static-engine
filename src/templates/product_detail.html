@@ -1,0 +1,183 @@
+<div class="container" style="margin-top: 100px; padding: 0 20px;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" style="margin-bottom: 40px;" aria-label="Breadcrumb">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; margin: 0; align-items: center;">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="/index.html" style="color: #64748b; text-decoration: none; font-size: 0.875rem; transition: color 0.2s;"><span itemprop="name">HUB</span></a>
+                <meta itemprop="position" content="1" />
+            </li>
+            <li style="color: #475569; font-size: 0.875rem;">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="/produkte/index.html" style="color: #64748b; text-decoration: none; font-size: 0.875rem; transition: color 0.2s;"><span itemprop="name">SUPPLY</span></a>
+                <meta itemprop="position" content="2" />
+            </li>
+            <li style="color: #475569; font-size: 0.875rem;">/</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name" style="color: var(--accent-cyan); font-size: 0.875rem; font-weight: 500;">{{PRODUCT_NAME}}</span>
+                <meta itemprop="position" content="3" />
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Schema.org injected by build.js -->
+    {{SCHEMA_LD}}
+
+    <!-- Main Product Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; margin-bottom: 100px;">
+
+        <!-- LEFT: Product Image -->
+        <div style="position: sticky; top: 120px; align-self: start;">
+            <div class="glass-panel" style="padding: 50px; border-radius: 20px; background: linear-gradient(135deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0.2) 100%); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(204,255,0,0.03) 0%, transparent 70%); pointer-events: none;"></div>
+                {{OPTIMIZED_IMAGE_TAG}}
+            </div>
+            
+            <!-- Image Meta -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <span style="color: #64748b; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em;">IMG_SOURCE: MERCHANT_API</span>
+                <span style="color: #10b981; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-check-circle"></i> VERIFIED</span>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 25px;">
+                <div class="glass-panel" style="padding: 15px; text-align: center; border-radius: 10px; transition: all 0.3s ease;">
+                    <i class="fas fa-shield-alt" style="font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 8px; display: block;"></i>
+                    <span style="color: #94a3b8; font-size: 0.75rem; display: block;">Buyer Protection</span>
+                </div>
+                <div class="glass-panel" style="padding: 15px; text-align: center; border-radius: 10px; transition: all 0.3s ease;">
+                    <i class="fas fa-certificate" style="font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 8px; display: block;"></i>
+                    <span style="color: #94a3b8; font-size: 0.75rem; display: block;">Verified Merchant</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Product Details -->
+        <div>
+            <!-- Status Badge -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(204,255,0,0.1); border: 1px solid var(--accent-cyan); padding: 8px 16px; border-radius: 30px;">
+                    <div style="width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; animation: pulse 2s infinite;"></div>
+                    <span style="color: var(--accent-cyan); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">AVAILABLE IN SUPPLY</span>
+                </div>
+                <span style="color: #475569; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;">ID: {{SLUG}}</span>
+            </div>
+            
+            <!-- Product Title -->
+            <h1 style="font-size: 3rem; line-height: 1.1; margin-bottom: 30px; background: linear-gradient(135deg, var(--accent-cyan), #14b8a6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">
+                {{PRODUCT_NAME}}
+            </h1>
+            
+            <!-- Price Block -->
+            <div style="display: flex; align-items: flex-end; gap: 25px; margin-bottom: 40px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 900; color: var(--accent-cyan); line-height: 1; text-shadow: 0 0 30px rgba(204,255,0,0.3);">
+                    {{PRICE}} <span style="font-size: 2rem; opacity: 0.8;">{{CURRENCY}}</span>
+                </div>
+                <div style="padding-bottom: 8px;">
+                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Incl. Taxes & Fees</div>
+                    <div style="color: #10b981; font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-chart-line"></i>
+                        <span>{{REVIEW_COUNT}} Analyst Checks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merchant & Action Block -->
+            <div class="glass-panel" style="padding: 30px; border-radius: 16px; margin-bottom: 50px; border: 1px solid rgba(204,255,0,0.2); background: linear-gradient(135deg, rgba(0,240,255,0.03) 0%, rgba(0,0,0,0.4) 100%);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                    <div>
+                        <div style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;">MERCHANT</div>
+                        <div style="color: #ffffff; font-size: 1.3rem; font-weight: 700;">{{MERCHANT_NAME}}</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+                        <span style="color: #10b981; font-size: 0.9rem; font-weight: 600;">In Stock</span>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <a href="{{AFFILIATE_LINK}}" target="_blank" rel="nofollow sponsored" class="btn-primary" style="font-size: 1.1rem; font-weight: 700; padding: 18px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 12px; transition: all 0.3s ease; text-decoration: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        BUY NOW
+                        <i class="fas fa-external-link-alt" style="font-size: 0.8rem; opacity: 0.7;"></i>
+                    </a>
+                    <button onclick="Compare.add(currentProduct)" class="btn-secondary" style="font-size: 0.95rem; font-weight: 600; padding: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 12px; transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-balance-scale"></i>
+                        COMPARE
+                    </button>
+                </div>
+
+                <!-- Disclaimer -->
+                <div style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; border-left: 3px solid var(--accent-cyan);">
+                    <p style="color: #64748b; font-size: 0.75rem; line-height: 1.6; margin: 0;">
+                        <i class="fas fa-info-circle" style="color: var(--accent-cyan); margin-right: 6px;"></i>
+                        <strong>Transparency:</strong> Affiliate links fund our independent testing. You pay the same price, we earn a small commission from qualifying purchases.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Analysis & Specs Section -->
+            <div style="margin-bottom: 60px;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 25px; background: linear-gradient(135deg, var(--accent-cyan), #14b8a6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">
+                    <i class="fas fa-chart-bar" style="margin-right: 10px; opacity: 0.7;"></i>
+                    Analysis & Specs
+                </h3>
+                
+                <!-- Pros/Cons Grid -->
+                {{PRO_CON_LIST}}
+                
+                <!-- Specifications -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; margin-bottom: 40px; background: rgba(0,0,0,0.4);">
+                    <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-cog" style="color: var(--accent-cyan);"></i>
+                        Technical Specifications
+                    </h4>
+                    <div style="color: #94a3b8; line-height: 1.8;">
+                        {{DESCRIPTION}}
+                    </div>
+                </div>
+
+                <!-- Zentra Verdict -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; margin-bottom: 40px; background: linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(0,0,0,0.4) 100%); border: 1px solid rgba(16,185,129,0.2);">
+                    <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-award"></i>
+                        Zentra Verdict
+                    </h4>
+                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; margin: 0;">
+                        {{WHY_BUY_THIS}}
+                    </p>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 25px; background: linear-gradient(135deg, var(--accent-cyan), #14b8a6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">
+                    <i class="fas fa-question-circle" style="margin-right: 10px; opacity: 0.7;"></i>
+                    Frequent Questions
+                </h3>
+                <div class="faq-grid">
+                    {{FAQ_SECTION}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // Product Data for Tools (Compare, Wishlist)
+    const currentProduct = {
+        id: "{{SLUG}}",
+        name: "{{PRODUCT_NAME}}",
+        image: "{{IMAGE_URL}}",
+        price: "{{PRICE}} {{CURRENCY}}",
+        brand: "{{BRAND_NAME}}",
+        category: "{{CAT_SLUG}}", // Note: Ensure build.js replaces this
+        url: "{{CANONICAL_URL}}",
+        affiliate: "{{AFFILIATE_LINK}}"
+    };
+</script>
+
+<script>
+// Simple Tab Logic if needed, or Intersection Observer for Sticky Nav
+</script>

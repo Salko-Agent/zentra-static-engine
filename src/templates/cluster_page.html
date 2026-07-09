@@ -1,0 +1,163 @@
+<!-- Best/Vergleich Cluster Page Template -->
+<div class="container mt-40 mb-80">
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs mb-20">
+        <a href="/index.html" class="text-muted hover-cyan text-sm">HUB</a>
+        <span class="text-muted">/</span>
+        <a href="/best/" class="text-muted hover-cyan text-sm">BEST</a>
+        <span class="text-muted">/</span>
+        <span class="text-cyan text-sm">{{CATEGORY_NAME}}</span>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="mb-60">
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;" class="gradient-text">
+            {{TITLE}}
+        </h1>
+        <p class="text-muted text-lg" style="max-width: 800px; line-height: 1.8;">
+            {{META_DESCRIPTION}}
+        </p>
+        <div class="flex-center mt-20" style="justify-content: flex-start; gap: 15px;">
+            <span class="badge cyan">{{PRODUCT_COUNT}} Produkte</span>
+            <span class="badge" style="background: rgba(255,255,255,0.05);">Täglich aktualisiert</span>
+            <span class="badge" style="background: rgba(255,255,255,0.05);">AT-Versand verfügbar</span>
+        </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="card mb-60" style="padding: 0; overflow: hidden;">
+        <div style="padding: 30px; border-bottom: 1px solid var(--border-glass);">
+            <h2 style="font-size: 1.8rem; margin: 0;">Vergleichstabelle</h2>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead style="background: rgba(0,240,255,0.05);">
+                    <tr>
+                        <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--border-glass);">
+                            Produkt</th>
+                        {{#each CRITERIA}}
+                        <th style="padding: 15px; text-align: center; border-bottom: 1px solid var(--border-glass);">
+                            {{this}}</th>
+                        {{/each}}
+                        <th style="padding: 15px; text-align: center; border-bottom: 1px solid var(--border-glass);">
+                            Preis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each PRODUCTS}}
+                    <tr style="border-bottom: 1px solid var(--border-glass);">
+                        <td style="padding: 15px;">
+                            <div class="flex-center" style="gap: 15px; justify-content: flex-start;">
+                                <img src="{{image}}" alt="{{name}}" loading="lazy" decoding="async"
+                                    style="width: 60px; height: 60px; object-fit: contain;">
+                                <div>
+                                    <a href="{{link}}" class="hover-cyan" style="font-weight: 600;">{{name}}</a>
+                                    <div class="text-xs text-muted">{{merchant}}</div>
+                                </div>
+                            </div>
+                        </td>
+                        {{#each scores}}
+                        <td style="padding: 15px; text-align: center;">
+                            <span
+                                class="badge {{#if (gte this 8)}}green{{else if (gte this 6)}}amber{{else}}red{{/if}}">
+                                {{this}}/10
+                            </span>
+                        </td>
+                        {{/each}}
+                        <td style="padding: 15px; text-align: center;">
+                            <div class="font-mono text-cyan" style="font-size: 1.2rem; font-weight: 700;">{{price}} EUR
+                            </div>
+                            <a href="{{affiliateLink}}" target="_blank" rel="nofollow sponsored"
+                                data-affiliate-track="{{merchant}}|{{productId}}|{{@index}}"
+                                class="btn btn-primary btn-sm mt-10">
+                                Zum Angebot →
+                            </a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 60px;">
+
+        <!-- Main Content -->
+        <div>
+            {{#each OUTLINE_SECTIONS}}
+            <div class="card mb-30" style="padding: 40px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: #00f0ff;">{{title}}</h2>
+                <div style="line-height: 1.8;">
+                    {{content}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Quick Links -->
+            <div class="card mb-30" style="padding: 30px;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Weitere Guides</h3>
+                <ul style="list-style: none; padding: 0;">
+                    {{#each INTERNAL_LINKS}}
+                    <li style="margin-bottom: 15px;">
+                        <a href="{{url}}" class="text-cyan hover-underline">→ {{title}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <!-- Affiliate Disclosure -->
+            {{#if AFFILIATE_DISCLOSURE}}
+            <div class="card" style="padding: 20px; background: rgba(255,200,0,0.05); border-left: 3px solid #ffc800;">
+                <p class="text-xs" style="line-height: 1.6; margin: 0;">
+                    ⚠️ <strong>Hinweis:</strong> Diese Seite enthält Affiliate-Links. Wir erhalten eine Provision, wenn
+                    Sie über unsere Links kaufen.
+                    <a href="/affiliate-offenlegung.html" class="text-cyan">Mehr erfahren</a>
+                </p>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <!-- Related Products Grid -->
+    <div class="mb-60">
+        <h2 style="font-size: 2rem; margin-bottom: 30px;">Alle {{CATEGORY_NAME}}</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+            {{> productGrid}}
+        </div>
+    </div>
+
+</div>
+
+<style>
+    table th {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+
+    table tbody tr:hover {
+        background: rgba(0, 240, 255, 0.02);
+    }
+
+    .badge.green {
+        background: rgba(0, 255, 0, 0.2);
+        color: #00ff00;
+    }
+
+    .badge.amber {
+        background: rgba(255, 200, 0, 0.2);
+        color: #ffc800;
+    }
+
+    .badge.red {
+        background: rgba(255, 0, 0, 0.2);
+        color: #ff6b6b;
+    }
+</style>

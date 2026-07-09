@@ -1,0 +1,182 @@
+<div class="container mt-40">
+    <div class="card p-40" style="max-width: 800px; margin: 0 auto;">
+        <h1 class="gradient-text mb-20">ENGINEERING LOG</h1>
+        <p class="text-muted mb-40">Share your build, ask for advice, or showcase your rig.</p>
+
+        <form id="create-post-form" class="flex-col" style="gap: 20px;">
+
+            <!-- Type Selection -->
+            <div class="form-group">
+                <label class="text-sm text-secondary mb-10 block">LOG TYPE</label>
+                <div class="flex" style="gap: 10px;">
+                    <label class="radio-card active" data-value="build">
+                        <i class="fas fa-tools mb-5"></i>
+                        <span>Build Log</span>
+                    </label>
+                    <label class="radio-card" data-value="discussion">
+                        <i class="fas fa-comments mb-5"></i>
+                        <span>Discussion</span>
+                    </label>
+                    <label class="radio-card" data-value="showcase">
+                        <i class="fas fa-image mb-5"></i>
+                        <span>Showcase</span>
+                    </label>
+                </div>
+                <input type="hidden" id="post-type" value="build">
+            </div>
+
+            <!-- Content -->
+            <div class="form-group">
+                <label class="text-sm text-secondary mb-10 block">TITLE</label>
+                <input type="text" id="title" class="input-glass full-width"
+                    placeholder="e.g. Project 'Neon Hawk' - Custom Loop Build" maxlength="100" required>
+            </div>
+
+            <div class="form-group">
+                <label class="text-sm text-secondary mb-10 block">DETAILS</label>
+                <textarea id="content" class="input-glass full-width" rows="8"
+                    placeholder="Share your process, specs, or questions..." required></textarea>
+            </div>
+
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                    <label class="text-sm text-secondary mb-10 block">LINKED PRODUCT (SLUG)</label>
+                    <input type="text" id="linked-slug" class="input-glass full-width"
+                        placeholder="e.g. tamiya-f14-tomcat">
+                    <p class="text-xs text-muted mt-5">Optional. Links this post to a store product.</p>
+                </div>
+                <div class="form-group">
+                    <label class="text-sm text-secondary mb-10 block">TAGS (COMMA SEPARATED)</label>
+                    <input type="text" id="tags" class="input-glass full-width"
+                        placeholder="watercooling, 3d-printing, custom">
+                </div>
+            </div>
+
+            <!-- Image Upload Placeholder -->
+            <div class="form-group">
+                <label class="text-sm text-secondary mb-10 block">COVER IMAGE (URL)</label>
+                <input type="text" id="image-url" class="input-glass full-width"
+                    placeholder="https://example.com/image.jpg">
+            </div>
+
+            <!-- Actions -->
+            <div class="flex-center mt-20" style="gap: 20px;">
+                <a href="/network/index.html" class="btn btn-secondary">CANCEL</a>
+                <button type="submit" class="btn btn-primary" id="submit-btn" style="min-width: 200px;">PUBLISH
+                    LOG</button>
+            </div>
+
+            <div id="form-error" class="text-amber text-center hidden mt-10"></div>
+
+        </form>
+    </div>
+</div>
+
+<style>
+    .input-glass {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-glass);
+        color: white;
+        padding: 12px;
+        border-radius: 4px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .input-glass:focus {
+        outline: none;
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+
+    .radio-card {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-glass);
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .radio-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .radio-card.active {
+        background: rgba(0, 240, 255, 0.1);
+        border-color: var(--accent-cyan);
+        color: var(--accent-cyan);
+    }
+
+    label {
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+</style>
+
+<script type="module">
+    import { Community } from '/src/js/community.js';
+    import { Auth } from '/src/js/auth.js';
+
+    Auth.init();
+
+    // Radio logic
+    const radios = document.querySelectorAll('.radio-card');
+    const typeInput = document.getElementById('post-type');
+    radios.forEach(r => {
+        r.addEventListener('click', () => {
+            radios.forEach(single => single.classList.remove('active'));
+            r.classList.add('active');
+            typeInput.value = r.dataset.value;
+        });
+    });
+
+    const form = document.getElementById('create-post-form');
+    const errorDiv = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!Auth.currentUser) {
+            alert("Please login to post.");
+            Auth.login();
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'PUBLISHING...';
+        errorDiv.classList.add('hidden');
+
+        try {
+            const rawTags = document.getElementById('tags').value;
+            const tags = rawTags.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
+            const rawSlug = document.getElementById('linked-slug').value.trim();
+            const linkedProductSlugs = rawSlug ? [rawSlug] : [];
+
+            const postData = {
+                type: typeInput.value,
+                title: document.getElementById('title').value,
+                content: document.getElementById('content').value,
+                images: [document.getElementById('image-url').value || 'https://via.placeholder.com/800x400'],
+                tags: tags,
+                linkedProductSlugs: linkedProductSlugs
+            };
+
+            await Community.createPost(postData);
+            window.location.href = '/network/index.html';
+        } catch (err) {
+            console.error(err);
+            errorDiv.textContent = err.message;
+            errorDiv.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'PUBLISH LOG';
+        }
+    });
+</script>

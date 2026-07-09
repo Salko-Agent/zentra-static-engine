@@ -1,0 +1,84 @@
+# Enable Gzip Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Force HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # === URL Migration & Redirect Plan ===
+  
+  # Legacy HTML files → Clean URLs
+  RewriteRule ^deals\.html$ /deals/ [R=301,L]
+  RewriteRule ^news\.html$ /news/ [R=301,L]
+  RewriteRule ^community\.html$ /network/ [R=301,L]
+  
+  # Parameter URLs → Canonical Clean URL (301 redirect to remove params)
+  # Sort/Filter parameters
+  RewriteCond %{QUERY_STRING} ^sort=|^filter=|^page= [NC]
+  RewriteRule ^(.*)$ /$1? [R=301,L]
+  
+  # Marketplace SPA Routing
+  RewriteRule ^community/market(/.*)?$ /community.html [L,QSA]
+  
+  # Hangar/Network SPA fallback
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(hangar|network)/(.*)$ /$1/ [L,QSA]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Strict-Transport-Security (HSTS)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Content Security Policy
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http:; connect-src 'self' https://www.google-analytics.com;"
+</IfModule>
+
+# Custom Error Pages
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+ErrorDocument 403 /403.html
+
+# Block Bad Bots
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_USER_AGENT} (SemrushBot|AhrefsBot|MJ12bot|BLEXBot|DotBot|serpstatbot|MegaIndex) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# Disable Directory Browsing
+Options -Indexes
+
+# Protect System Files
+<FilesMatch "(^\.htaccess|^\.env|^package\.json|^build\.js|\.log$)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Remove ETags (use cache-control)
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None

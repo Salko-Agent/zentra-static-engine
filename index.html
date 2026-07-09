@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zentra Services | The Hub for Precision Tech & Makers</title>
+    <meta name="description"
+        content="The curated ecosystem for verified hardware, model kits, and tech intelligence. Join the network.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zentra.services/">
+    <meta property="og:title" content="Zentra Services | The Hub for Precision Tech & Makers">
+    <meta property="og:description" content="The curated ecosystem for verified hardware, model kits, and tech intelligence. Join the network.">
+    <meta property="og:image" content="https://zentra.services/assets/images/og-home.jpg">
+    <meta property="og:site_name" content="Zentra - Tech & Hardware">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zentra.services/">
+    <meta name="twitter:title" content="Zentra Services | The Hub for Precision Tech & Makers">
+    <meta name="twitter:description" content="The curated ecosystem for verified hardware, model kits, and tech intelligence. Join the network.">
+    <meta name="twitter:image" content="https://zentra.services/assets/images/og-home.jpg">
+
+    <!-- Mobile & Theme -->
+    <meta name="theme-color" content="#00f0ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/assets/images/apple-touch-icon-167x167.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Visual System 2.0 -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHYQK65Z0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJHYQK65Z0');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9641197173417820" crossorigin="anonymous"></script>
+
+    <!-- Internationalization -->
+    <script src="/assets/js/i18n.js" defer></script>
+
+    <!-- Schema.org Organization + SitelinksSearchBox -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://zentra.services/#organization",
+        "name": "Zentra Services",
+        "url": "https://zentra.services",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://zentra.services/assets/images/og-home.jpg",
+            "width": 1200,
+            "height": 630
+        },
+        "description": "The curated ecosystem for verified hardware, model kits, and tech intelligence.",
+        "founder": {
+            "@type": "Person",
+            "name": "Salih",
+            "url": "https://zentra.services/about.html"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@zentra.services",
+            "contactType": "Customer Service",
+            "areaServed": "AT",
+            "availableLanguage": "German"
+        },
+        "sameAs": [
+            "https://zentra.services"
+        ],
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://zentra.services/index.html#search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Background Effects -->
+    <canvas id="particle-canvas"
+        style="position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; opacity: 0.8; pointer-events: none;"></canvas>
+
+    <nav class="navbar">
+        <div class="container flex-between" style="height: 100%;">
+            <a href="/index.html" class="nav-logo">ZENTRA<span>.SERVICES</span></a>
+
+            <div class="nav-links hidden-mobile">
+                <a href="/index.html" class="nav-link active" data-i18n="nav.hub">HUB</a>
+                <a href="/news/index.html" class="nav-link" data-i18n="nav.intel">INTEL</a>
+                <a href="/produkte/index.html" class="nav-link" data-i18n="nav.supply">SUPPLY</a>
+                <a href="/b2b.html" class="nav-link">B2B</a>
+            </div>
+
+            <div class="nav-actions flex-center" style="gap: 15px;">
+                <button id="search-trigger" class="btn-secondary" style="padding: 10px 18px; display: flex; align-items: center; gap: 8px;" aria-label="Search">
+                    <i class="fas fa-search" style="font-size: 1rem;"></i>
+                    <span class="hidden-mobile" style="font-size: 0.9rem;">Search</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- HERO SECTION (The Holo-Deck) -->
+        <section class="container mt-40">
+            <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 20px; min-height: 500px;">
+
+                <!-- Main Promo -->
+                <div class="card flex-col"
+                    style="padding: 60px; justify-content: center; background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.1), rgba(19, 19, 22, 0.9));">
+                    <span class="badge cyan mb-20" style="align-self: flex-start;">SYSTEM_ONLINE</span>
+                    <h1 class="gradient-text mb-20" style="font-size: 3.5rem; line-height: 1.1;">BUILD THE <br>FUTURE.
+                    </h1>
+                    <p class="text-primary mb-40" style="font-size: 1.25rem; max-width: 500px;">
+                        The curated ecosystem for precision makers and hardware enthusiasts. Verified gear, expert
+                        builds, and reliable intelligence.
+                    </p>
+                    <div class="flex" style="gap: 20px;">
+                        <a href="/produkte/index.html" class="btn btn-primary">EXPLORE SUPPLY</a>
+                        <a href="/newsletter.html" class="btn btn-secondary">NEWSLETTER 📧</a>
+                    </div>
+                </div>
+
+                <!-- Trending Intel (Sidebar) -->
+                <div class="card" style="padding: 30px;">
+                    <div class="flex-between mb-20"
+                        style="border-bottom: 1px solid var(--border-glass); padding-bottom: 10px;">
+                        <h3 class="text-sm text-secondary">LATEST INTEL</h3>
+                        <div class="led-indicator"
+                            style="width: 8px; height: 8px; background: var(--accent-acid); border-radius: 50%; box-shadow: 0 0 10px var(--accent-acid);">
+                        </div>
+                    </div>
+                    <div id="home-news-sidebar" class="flex-col" style="gap: 20px;">
+                        <!-- JS injected news snippets -->
+                        <div class="text-muted text-sm">Loading feed...</div>
+                    </div>
+                    <a href="/news/index.html" class="btn btn-secondary full-width mt-20 text-xs">VIEW ALL
+                        INTELLIGENCE</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY PORTALS (4-Column Grid - No Empty Space) -->
+        <section class="container mt-40 mb-40">
+            <div class="flex-between mb-20">
+                <h2 class="text-primary">SECTORS</h2>
+                <a href="/produkte/index.html" class="text-cyan text-sm hover-underline">VIEW ALL CATEGORIES ></a>
+            </div>
+
+            <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 20px;">
+
+                <!-- Tech Deals -->
+                <a href="/produkte/index.html" class="card flex-col justify-end hover-scale"
+                    style="min-height: 250px; background: linear-gradient(135deg, rgba(0,240,255,0.15), rgba(0,80,255,0.1)), linear-gradient(to top, #000 0%, transparent 60%); position: relative; overflow: hidden; transition: all 0.3s ease;">
+                    <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5rem; opacity: 0.15;">🎯</div>
+                    <h3 class="gradient-text mb-10" style="font-size: 1.5rem;">TECH DEALS</h3>
+                    <p class="text-sm text-muted">Verified Products & Best Prices</p>
+                    <div class="badge cyan mt-20" style="align-self: flex-start; font-size: 0.7rem;">HOT</div>
+                </a>
+
+                <!-- Hardware -->
+                <a href="/produkte/hardware/index.html" class="card flex-col justify-end hover-scale"
+                    style="min-height: 250px; background: linear-gradient(135deg, rgba(255,100,0,0.12), rgba(200,0,100,0.08)), linear-gradient(to top, #000 0%, transparent 70%); position: relative; overflow: hidden; transition: all 0.3s ease;">
+                    <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5rem; opacity: 0.15;">💻</div>
+                    <h3 class="mb-10" style="font-size: 1.5rem; color: #ff6b6b;">HARDWARE</h3>
+                    <p class="text-sm text-muted">PC Components & Parts</p>
+                </a>
+
+                <!-- Model Kits -->
+                <a href="/produkte/model-kits/index.html" class="card flex-col justify-end hover-scale"
+                    style="min-height: 250px; background: linear-gradient(135deg, rgba(0,255,100,0.12), rgba(0,200,200,0.08)), linear-gradient(to top, #000 0%, transparent 70%); position: relative; overflow: hidden; transition: all 0.3s ease;">
+                    <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5rem; opacity: 0.15;">✈️</div>
+                    <h3 class="mb-10" style="font-size: 1.5rem; color: #4ecdc4;">MODEL KITS</h3>
+                    <p class="text-sm text-muted">Scale Models & Hobby</p>
+                </a>
+
+                <!-- Tech News -->
+                <a href="/news/index.html" class="card flex-col justify-end hover-scale"
+                    style="min-height: 250px; background: linear-gradient(135deg, rgba(255,0,200,0.12), rgba(100,0,255,0.08)), linear-gradient(to top, #000 0%, transparent 70%); position: relative; overflow: hidden; transition: all 0.3s ease;">
+                    <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5rem; opacity: 0.15;">📰</div>
+                    <h3 class="mb-10" style="font-size: 1.5rem; color: #ff6ec7;">TECH INTEL</h3>
+                    <p class="text-sm text-muted">News & Insights</p>
+                    <div class="badge"
+                        style="align-self: flex-start; background: rgba(255,110,199,0.2); color: #ff6ec7; font-size: 0.7rem; margin-top: 15px;">
+                        UPDATED DAILY</div>
+                </a>
+
+            </div>
+        </section>
+
+        <style>
+            @media (max-width: 900px) {
+                .grid[style*="grid-template-columns: repeat(4, 1fr)"] {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .grid[style*="grid-template-columns: repeat(4, 1fr)"] {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+        </style>
+
+
+
+    </main>
+
+    <footer style="background: linear-gradient(180deg, rgba(19, 19, 22, 0.95) 0%, rgba(10, 10, 15, 0.98) 100%); border-top: 1px solid rgba(0, 240, 255, 0.1); margin-top: 80px; padding: 60px 0 30px 0;">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;">
+                
+                <!-- Brand Column -->
+                <div>
+                    <div class="footer-logo" style="margin-bottom: 20px;">
+                        <h3 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #ffffff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0;">
+                            ZENTRA<span style="color: var(--accent-cyan);">.SERVICES</span>
+                        </h3>
+                    </div>
+                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px; max-width: 320px;">
+                        The curated ecosystem for verified hardware, precision makers, and tech intelligence. Built by professionals, for professionals.
+                    </p>
+                    <div class="social-links" style="display: flex; gap: 15px; margin-top: 25px;">
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                            <i class="fab fa-twitter" style="font-size: 1.1rem;"></i>
+                        </a>
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                            <i class="fab fa-linkedin" style="font-size: 1.1rem;"></i>
+                        </a>
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                            <i class="fab fa-github" style="font-size: 1.1rem;"></i>
+                        </a>
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                            <i class="fab fa-discord" style="font-size: 1.1rem;"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Platform Links -->
+                <div>
+                    <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-rocket" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                        Platform
+                    </h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li>
+                            <a href="/news/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-newspaper" style="width: 16px;"></i> Tech Intel
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/produkte/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-box-open" style="width: 16px;"></i> Supply Depot
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/b2b.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-briefcase" style="width: 16px;"></i> B2B Solutions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/newsletter.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-envelope" style="width: 16px;"></i> Newsletter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Resources -->
+                <div>
+                    <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-book" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                        Resources
+                    </h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li>
+                            <a href="/about.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-info-circle" style="width: 16px;"></i> About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kontakt.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-headset" style="width: 16px;"></i> Contact
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/faq.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-question-circle" style="width: 16px;"></i> FAQ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-shield-alt" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                        Legal
+                    </h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li>
+                            <a href="/datenschutz.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-user-shield" style="width: 16px;"></i> Privacy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/impressum.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-gavel" style="width: 16px;"></i> Impressum
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/affiliate-offenlegung.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                                <i class="fas fa-file-contract" style="width: 16px;"></i> Disclosure
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div style="border-top: 1px solid rgba(0, 240, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div style="color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-copyright"></i>
+                    <span>2026 BMS Digital Solutions. All Rights Reserved.</span>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">Made with</span>
+                    <i class="fas fa-heart" style="color: #ff6ec7; font-size: 0.9rem; animation: heartbeat 1.5s ease-in-out infinite;"></i>
+                    <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">in Austria</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        @media (max-width: 1024px) {
+            footer .grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 640px) {
+            footer .grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Particle Animation -->
+    <script src="/assets/js/particles.js?v=3.3"></script>
+
+    <!--  Latest Intel Sidebar Loader -->
+    <script>
+        // Load Latest Intel for sidebar
+        (async function () {
+            const sidebar = document.getElementById('home-news-sidebar');
+            if (!sidebar) return;
+
+            try {
+                const res = await fetch('/assets/data/news.json');
+                const news = await res.json();
+
+                if (!news || news.length === 0) {
+                    sidebar.innerHTML = '<div class="text-muted text-sm">No news available</div>';
+                    return;
+                }
+
+                // Show first 3 news items
+                const latest = news.slice(0, 3);
+
+                sidebar.innerHTML = latest.map(item => `
+                    <a href="${item.link}" class="flex-col" style="gap: 8px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-decoration: none; display: block;">
+                        <h4 class="text-sm text-white" style="line-height: 1.3; margin: 0; font-size: 0.95rem;">${item.title}</h4>
+                        <div class="flex" style="gap: 10px; font-size: 0.75rem; color: var(--text-muted);">
+                            <span>${item.source}</span>
+                            <span>•</span>
+                            <span>${item.date}</span>
+                        </div>
+                    </a>
+                `).join('');
+
+            } catch (error) {
+                console.error('Error loading Intel sidebar:', error);
+                sidebar.innerHTML = '<div class="text-muted text-sm">Failed to load feed</div>';
+            }
+        })();
+    </script>
+
+    <!-- Global Search Modal -->
+    <div id="search-modal" class="hidden"
+        style="position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 9999; display: flex; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div class="container" style="max-width: 700px;">
+            <div class="glass-panel p-40"
+                style="background: rgba(19, 19, 22, 0.95); border: 2px solid rgba(0,240,255,0.3); position: relative;">
+                <button id="search-close"
+                    style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✕</button>
+                <h2 class="gradient-text mb-20" style="font-size: 2rem;">Suche</h2>
+                <input type="text" id="global-search-input" placeholder="Suchen Sie nach Artikeln..."
+                    style="width: 100%; padding: 18px 20px; background: rgba(0,0,0,0.5); border: 2px solid var(--glass-border); border-radius: 12px; color: white; font-size: 1.1rem; margin-bottom: 30px;"
+                    autofocus>
+                <div id="search-results" style="max-height: 400px; overflow-y: auto;">
+                    <p class="text-muted text-center" style="padding: 40px 0;">Geben Sie einen Suchbegriff ein...</p>
+                </div>
+                <div class="text-muted text-xs text-center mt-20" style="opacity: 0.5;">
+                    <kbd style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">ESC</kbd> zum
+                    Schließen
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FontAwesome (Fixed CORS) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        // Global Search Logic
+        const searchModal = document.getElementById('search-modal');
+        const searchTrigger = document.getElementById('search-trigger');
+        const searchClose = document.getElementById('search-close');
+        const searchInput = document.getElementById('global-search-input');
+        const searchResults = document.getElementById('search-results');
+
+        function openSearch() {
+            if (!searchModal) return;
+            searchModal.classList.remove('hidden');
+            setTimeout(() => searchInput && searchInput.focus(), 100);
+        }
+
+        function closeSearch() {
+            if (!searchModal) return;
+            searchModal.classList.add('hidden');
+            if (searchInput) searchInput.value = '';
+            if (searchResults) searchResults.innerHTML = '<p class="text-muted text-center" style="padding: 40px 0;">Geben Sie einen Suchbegriff ein...</p>';
+        }
+
+        if (searchTrigger) searchTrigger.addEventListener('click', openSearch);
+        if (searchClose) searchClose.addEventListener('click', closeSearch);
+        if (searchModal) searchModal.addEventListener('click', (e) => { if (e.target === searchModal) closeSearch(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && searchModal && !searchModal.classList.contains('hidden')) closeSearch();
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', async (e) => {
+                const query = e.target.value.trim().toLowerCase();
+                if (query.length < 2) {
+                    searchResults.innerHTML = '<p class="text-muted text-center" style="padding: 40px 0;">Geben Sie mindestens 2 Zeichen ein...</p>';
+                    return;
+                }
+                searchResults.innerHTML = '<p class="text-muted text-center" style="padding: 40px 0;">🔍 Suche...</p>';
+                try {
+                    // Search products
+                    const [productsRes, newsRes] = await Promise.all([
+                        fetch('/assets/data/products.json'),
+                        fetch('/assets/data/news.json')
+                    ]);
+                    const products = await productsRes.json();
+                    const news = await newsRes.json();
+                    
+                    const productResults = products.filter(p => 
+                        p.title.toLowerCase().includes(query) || 
+                        (p.category && p.category.toLowerCase().includes(query))
+                    ).slice(0, 5);
+                    
+                    const newsResults = news.filter(i => 
+                        i.title.toLowerCase().includes(query) || 
+                        i.description.toLowerCase().includes(query)
+                    ).slice(0, 3);
+                    
+                    let html = '';
+                    
+                    if (productResults.length > 0) {
+                        html += '<h4 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase;">🛒 Produkte</h4>';
+                        html += productResults.map(p => `
+                            <a href="${p.link}" style="display: block; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 10px; text-decoration: none; border-left: 3px solid transparent;" onmouseover="this.style.background='rgba(0,240,255,0.1)';this.style.borderLeftColor='var(--accent-cyan)'" onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderLeftColor='transparent'">
+                                <h4 class="text-white" style="font-size: 1rem; margin: 0 0 8px 0;">${p.title}</h4>
+                                <p class="text-muted text-sm" style="margin: 0; font-size: 0.85rem;">${p.price} • ${p.category || 'Deal'}</p>
+                            </a>
+                        `).join('');
+                    }
+                    
+                    if (newsResults.length > 0) {
+                        html += '<h4 style="color: var(--accent-cyan); margin: 20px 0 15px 0; font-size: 0.9rem; text-transform: uppercase;">📰 News</h4>';
+                        html += newsResults.map(i => `
+                            <a href="${i.link}" style="display: block; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 10px; text-decoration: none; border-left: 3px solid transparent;" onmouseover="this.style.background='rgba(0,240,255,0.1)';this.style.borderLeftColor='var(--accent-cyan)'" onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderLeftColor='transparent'">
+                                <h4 class="text-white" style="font-size: 1rem; margin: 0 0 8px 0;">${i.title}</h4>
+                                <p class="text-muted text-sm" style="margin: 0; font-size: 0.85rem;">${i.description.substring(0, 100)}...</p>
+                                <span class="text-cyan text-xs" style="font-size: 0.75rem; margin-top: 8px; display: inline-block;">${i.source} • ${i.date}</span>
+                            </a>
+                        `).join('');
+                    }
+                    
+                    if (productResults.length === 0 && newsResults.length === 0) {
+                        html = `
+                            <div style="text-align: center; padding: 40px 20px;">
+                                <p class="text-white" style="font-size: 1.1rem; margin-bottom: 15px;">😔 Produkt nicht gefunden</p>
+                                <p class="text-muted" style="margin-bottom: 25px;">Kein Problem! Kontaktieren Sie uns und wir finden das beste Angebot für Sie.</p>
+                                <a href="/b2b.html" class="btn-primary" style="display: inline-block; padding: 12px 24px; background: var(--accent-cyan); color: black; text-decoration: none; border-radius: 8px; font-weight: 600;">Jetzt Anfragen →</a>
+                            </div>
+                        `;
+                    }
+                    
+                    searchResults.innerHTML = html;
+                        `).join('');
+                    }
+                } catch (err) {
+                    searchResults.innerHTML = '<p class="text-muted text-center" style="padding: 40px 0;">❌ Fehler</p>';
+                }
+            });
+        }
+    </script>
+
+    <script type="module" src="/script.js?v=2.0"></script>
+</body>
+
+</html>

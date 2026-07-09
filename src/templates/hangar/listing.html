@@ -1,0 +1,172 @@
+<div class="container mt-40">
+    <div id="listing-container">
+        <!-- Loading State -->
+        <div class="text-center p-40">
+            <div class="loading-spinner"></div>
+            <p class="text-muted mt-20">Accessing Secure Hangar Storage...</p>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { Market } from '/src/js/market.js';
+    import { Auth } from '/src/js/auth.js';
+    import { db, doc, getDoc, onSnapshot } from '/src/js/firebase-config.js';
+
+    Auth.init();
+
+    // Get Listing ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const listingId = urlParams.get('id');
+
+    if (!listingId) {
+        window.location.href = '/hangar/index.html';
+    }
+
+    const container = document.getElementById('listing-container');
+
+    async function loadListing() {
+        try {
+            // Real-time listener for status updates
+            onSnapshot(doc(db, "listings", listingId), async (docSnap) => {
+                if (!docSnap.exists()) {
+                    container.innerHTML = '<div class="text-center text-amber">Listing not found or removed.</div>';
+                    return;
+                }
+
+                const item = { id: docSnap.id, ...docSnap.data() };
+
+                // Fetch associated transaction if any
+                const transaction = await Market.getTransactionForListing(listingId);
+
+                renderListing(item, transaction);
+            });
+
+        } catch (err) {
+            console.error(err);
+            container.innerHTML = '<div class="text-center text-amber">Error loading listing data.</div>';
+        }
+    }
+
+    function renderListing(item, tx) {
+        const isOwner = Auth.currentUser && Auth.currentUser.uid === item.sellerId;
+        const isBuyer = tx && Auth.currentUser && Auth.currentUser.uid === tx.buyerId;
+
+        let statusBadge = `<span class="badge ${item.status === 'active' ? 'cyan' : 'amber'}">${item.status.toUpperCase()}</span>`;
+        if (tx) {
+            statusBadge = `<span class="badge ${tx.status === 'completed' ? 'cyan' : 'amber'}">ESCROW: ${tx.status.toUpperCase()}</span>`;
+        }
+
+        // Action Buttons Logic
+        let actionButtons = '';
+
+        if (item.status === 'active' && !isOwner) {
+            actionButtons = `
+                <div class="glass-panel p-20 mt-20" style="border: 1px solid var(--accent-cyan);">
+                    <h3 class="gradient-text mb-10"><i class="fas fa-shield-alt"></i> ZENTRA PROTECT</h3>
+                    <p class="text-sm text-muted mb-20">Funds held in escrow until you confirm delivery.</p>
+                    <button id="buy-btn" class="btn btn-primary full-width">BUY NOW (${item.price} €)</button>
+                </div>
+            `;
+        } else if (tx) {
+            // Escrow State Machine UI
+            let escrowActions = '';
+
+            // BUYER ACTIONS
+            if (isBuyer) {
+                if (tx.status === 'initiated') {
+                    escrowActions = `<button id="pay-btn" class="btn btn-primary full-width mt-10">SIMULATE PAYMENT</button>`;
+                } else if (tx.status === 'shipped') {
+                    escrowActions = `<button id="confirm-btn" class="btn btn-primary full-width mt-10">CONFIRM RECEIPT</button>
+                                      <button id="dispute-btn" class="btn btn-secondary full-width mt-10" style="color:var(--accent-amber); border-color:var(--accent-amber);">REPORT ISSUE</button>`;
+                } else if (tx.status === 'completed') {
+                    escrowActions = `<div class="text-cyan text-center mt-10"><i class="fas fa-check-circle"></i> Transaction Complete</div>`;
+                } else {
+                    escrowActions = `<div class="text-muted text-center mt-10">Waiting for Seller...</div>`;
+                }
+            }
+            // SELLER ACTIONS
+            else if (isOwner) {
+                if (tx.status === 'paid_escrow') {
+                    escrowActions = `<button id="ship-btn" class="btn btn-primary full-width mt-10">MARK SHIPPED</button>`;
+                } else if (tx.status === 'shipped') {
+                    escrowActions = `<div class="text-muted text-center mt-10">Waiting for Buyer confirmation...</div>`;
+                } else if (tx.status === 'completed') {
+                    escrowActions = `<div class="text-cyan text-center mt-10"><i class="fas fa-check-circle"></i> Funds Released</div>`;
+                } else {
+                    escrowActions = `<div class="text-muted text-center mt-10">Waiting for Buyer action...</div>`;
+                }
+            }
+
+            actionButtons = `
+                <div class="glass-panel p-20 mt-20" style="border: 1px solid var(--accent-amber);">
+                    <h3 class="text-amber mb-10">ESCROW STATUS: ${tx.status.toUpperCase()}</h3>
+                    ${escrowActions}
+                </div>
+            `;
+        }
+
+        container.innerHTML = `
+            <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
+                <!-- Main Content -->
+                <div>
+                    <a href="/hangar/index.html" class="text-muted text-sm mb-20 block hover-cyan">← BACK TO HANGAR</a>
+                    
+                    <div class="card-image mb-20" style="height: 400px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px; border: 1px solid var(--border-glass);">
+                        <img src="${item.images ? item.images[0] : '/assets/images/placeholder.png'}" style="max-width: 100%; max-height: 100%;">
+                    </div>
+
+                    <h1 class="mb-10">${item.title}</h1>
+                    <div class="flex mb-20" style="gap: 15px;">
+                        ${statusBadge}
+                        <span class="badge">${item.condition.toUpperCase()}</span>
+                        <span class="badge">${item.category.toUpperCase()}</span>
+                    </div>
+
+                    <div class="glass-panel p-20">
+                        <h3 class="text-secondary mb-10">DESCRIPTION</h3>
+                        <p class="text-muted" style="white-space: pre-wrap;">${item.description}</p>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="flex-col" style="gap: 20px;">
+                    <div class="card p-20">
+                        <div class="text-xs text-secondary mb-5">SELLER</div>
+                        <div class="flex items-center gap-10">
+                            <i class="fas fa-user-circle text-2xl text-muted"></i>
+                            <div>
+                                <div class="font-bold">${item.sellerName}</div>
+                                <div class="text-xs text-muted">Member since 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-20">
+                         <div class="text-xs text-secondary mb-5">PRICE</div>
+                         <div class="text-3xl font-mono text-cyan">${item.price.toFixed(2)} €</div>
+                         <div class="text-xs text-muted mt-5">+ Shipping (from ${item.location})</div>
+                    </div>
+
+                    ${actionButtons}
+                </div>
+            </div>
+        `;
+
+        // Attach Listeners
+        if (document.getElementById('buy-btn')) {
+            document.getElementById('buy-btn').onclick = () => Market.initiatePurchase(item.id);
+        }
+        if (document.getElementById('pay-btn')) {
+            document.getElementById('pay-btn').onclick = () => Market.simulatePayment(tx.id);
+        }
+        if (document.getElementById('ship-btn')) {
+            document.getElementById('ship-btn').onclick = () => Market.markShipped(tx.id);
+        }
+        if (document.getElementById('confirm-btn')) {
+            document.getElementById('confirm-btn').onclick = () => Market.confirmReceipt(tx.id);
+        }
+    }
+
+    loadListing();
+</script>

@@ -1,0 +1,50 @@
+/* Zentra.Services - Visual Architecture 2.0 */
+/* File: variables.css */
+
+:root {
+    /* --- PALETTE: Cyber-Industrial --- */
+    --bg-void: #050507;
+    /* Deepest Layer */
+    --bg-panel: #131316;
+    /* Card Surface */
+    --bg-surface: #1c1c21;
+    /* Elevated Surface */
+
+    --accent-cyan: #00f0ff;
+    /* Primary Action / Tech */
+    --accent-amber: #ffae00;
+    /* Warning / Market */
+    --accent-acid: #ccff00;
+    /* Success / Growth */
+
+    --text-primary: #e2e8f0;
+    /* Mist White */
+    --text-secondary: #94a3b8;
+    /* Carbon Grey */
+    --text-muted: #64748b;
+    /* Deep Grey */
+
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-active: rgba(0, 240, 255, 0.3);
+
+    /* --- TYPOGRAPHY --- */
+    --font-heading: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* --- SPACING & GRID --- */
+    --grid-gap: 2px;
+    --container-width: 1400px;
+
+    /* --- EFFECTS --- */
+    --glass-blur: blur(12px);
+    --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+/* Dark Mode Defaults (Hardcoded for now as it's a tech site) */
+body {
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}

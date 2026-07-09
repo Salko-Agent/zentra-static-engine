@@ -1,0 +1,392 @@
+/* File: components.css */
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.btn-primary {
+    background: var(--accent-cyan);
+    color: #000;
+}
+
+.btn-primary:hover {
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+/* --- CARDS (Glass Slab) --- */
+.card {
+    background: rgba(19, 19, 22, 0.6);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: var(--glass-blur);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-2px);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    height: 70px;
+    background: rgba(5, 5, 7, 0.9);
+    border-bottom: 1px solid var(--border-glass);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+    color: #fff;
+}
+
+.nav-logo span {
+    color: var(--accent-cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--accent-cyan);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    /* bottom -24px roughly aligns with header bottom */
+    bottom: -26px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* --- BADGES --- */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+}
+
+.badge.cyan {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.badge.amber {
+    border-color: var(--accent-amber);
+    color: var(--accent-amber);
+}
+
+/* --- PRODUCT CARD SPECIFIC --- */
+.product-card-img {
+    aspect-ratio: 1/1;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card-img img {
+    max-width: 80%;
+    max-height: 80%;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.card:hover .product-card-img img {
+    transform: scale(1.05);
+}
+
+/* --- CATEGORY CARDS --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+    padding: 20px 0;
+}
+
+.category-card {
+    background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(10, 10, 25, 0.98));
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 20px;
+    padding: 0;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.03), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.category-card:hover {
+    border-color: rgba(0, 240, 255, 0.5);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 240, 255, 0.25), 0 0 80px rgba(0, 240, 255, 0.15);
+}
+
+.category-card:hover::before {
+    opacity: 1;
+}
+
+.category-card-icon-wrapper {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 180, 255, 0.1));
+    border-right: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    position: relative;
+}
+
+.category-card-icon-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.2), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.category-card:hover .category-card-icon-wrapper::after {
+    opacity: 1;
+}
+
+.category-icon {
+    font-size: 3.5rem;
+    color: #00f0ff;
+    filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.6));
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.category-card-content {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.category-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.category-name {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #ffffff, #00f0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.category-count {
+    color: #000000;
+    background: linear-gradient(135deg, #00f0ff, #00d4ff);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0, 240, 255, 0.4);
+}
+
+.category-desc {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.category-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #00f0ff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: gap 0.3s ease;
+}
+
+.category-cta i {
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-cta {
+    gap: 14px;
+}
+
+.category-card:hover .category-cta i {
+    transform: translateX(4px);
+}
+
+/* --- FOOTER --- */
+footer {
+    border-top: 1px solid var(--border-glass);
+    background: var(--bg-panel);
+    padding: 60px 0;
+    margin-top: 80px;
+}
+
+/* --- RESPONSIVE MOBILE STYLES --- */
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+    }
+
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.75rem;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    /* Category Grid Mobile */
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 10px 0;
+    }
+
+    .category-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .category-card-icon-wrapper {
+        min-width: 100%;
+        padding: 24px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    .category-icon {
+        font-size: 2.5rem;
+    }
+
+    .category-card-content {
+        padding: 20px;
+    }
+
+    .category-name {
+        font-size: 1.3rem;
+    }
+
+    .category-count {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
+
+    .category-desc {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+    }
+
+    footer {
+        padding: 40px 0;
+        margin-top: 40px;
+    }
+}

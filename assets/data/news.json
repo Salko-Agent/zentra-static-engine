@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "title": "Zentra Marketplace Launches",
+        "image": "/assets/images/news-placeholder.jpg",
+        "source": "Zentra News",
+        "url": "#"
+    },
+    {
+        "id": 2,
+        "title": "Top Tech Deals of the Week",
+        "image": "/assets/images/news-placeholder.jpg",
+        "source": "TechRadar",
+        "url": "#"
+    }
+]

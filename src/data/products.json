@@ -1,0 +1,18 @@
+[
+    {
+        "id": "prod-001",
+        "name": "Zentra X1 Neural Processor",
+        "description": "Next-gen AI accelerator for edge computing.",
+        "price": "$499.00",
+        "image": "/assets/images/products/processor.jpg",
+        "specs": ["128 TOPS", "16GB HBM2", "15W TDP"]
+    },
+    {
+        "id": "prod-002",
+        "name": "Quantum Link Bridge",
+        "description": "High-speed interconnect for distributed systems.",
+        "price": "$299.00",
+        "image": "/assets/images/products/bridge.jpg",
+        "specs": ["100Gbps", "Low Latency", "PCIe 5.0"]
+    }
+]

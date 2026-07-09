@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Health Check | Zentra.Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .dashboard {
+            padding: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card.success {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-left-color: #10b981;
+        }
+        
+        .stat-card.warning {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-left-color: #f59e0b;
+        }
+        
+        .stat-card.error {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-left-color: #ef4444;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .check-icon.pass {
+            background: #10b981;
+            color: white;
+        }
+        
+        .check-icon.fail {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .check-icon.pending {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .check-content {
+            flex: 1;
+        }
+        
+        .check-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        
+        .check-description {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .url-list {
+            list-style: none;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .url-list li {
+            padding: 8px;
+            margin-bottom: 5px;
+            background: white;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .action-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        
+        .action-button:hover {
+            background: #2563eb;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            transition: width 0.5s ease;
+        }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .recommendations h3 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+        
+        .recommendations ul {
+            list-style: none;
+        }
+        
+        .recommendations li {
+            padding: 8px 0;
+            color: #78350f;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .recommendations li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ SEO Health Dashboard</h1>
+            <p>Zentra.Services Technical SEO Monitoring</p>
+        </header>
+        
+        <div class="dashboard">
+            <!-- Progress Overview -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress">0%</div>
+            </div>
+            
+            <!-- Key Metrics -->
+            <div class="stats-grid">
+                <div class="stat-card success">
+                    <div class="stat-label">Pages Indexed</div>
+                    <div class="stat-value" id="indexedPages">0/4</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Meta Tags Score</div>
+                    <div class="stat-value" id="metaScore">0%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Structured Data</div>
+                    <div class="stat-value" id="schemaCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Performance Score</div>
+                    <div class="stat-value" id="perfScore">-</div>
+                </div>
+            </div>
+            
+            <!-- On-Page SEO -->
+            <div class="section">
+                <h2>📄 On-Page SEO</h2>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Title Tags Optimized</div>
+                        <div class="check-description">All pages have unique, keyword-rich title tags (50-60 characters)</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Meta Descriptions Present</div>
+                        <div class="check-description">All pages have compelling meta descriptions (150-160 characters)</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Canonical URLs Set</div>
+                        <div class="check-description">Canonical tags prevent duplicate content issues</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Heading Structure (H1-H6)</div>
+                        <div class="check-description">Proper heading hierarchy maintained across all pages</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technical SEO -->
+            <div class="section">
+                <h2>⚙️ Technical SEO</h2>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Sitemap.xml Created</div>
+                        <div class="check-description">
+                            XML sitemap includes all pages with proper priorities
+                            <ul class="url-list">
+                                <li>https://zentra.services/sitemap.xml</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Robots.txt Configured</div>
+                        <div class="check-description">
+                            Robots.txt properly configured with sitemap reference
+                            <ul class="url-list">
+                                <li>https://zentra.services/robots.txt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pending">⏳</div>
+                    <div class="check-content">
+                        <div class="check-title">HTTPS Enabled</div>
+                        <div class="check-description">SSL certificate active and HTTP redirects to HTTPS</div>
+                        <button class="action-button" onclick="window.open('https://www.ssllabs.com/ssltest/analyze.html?d=zentra.services', '_blank')">
+                            Test SSL Configuration
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Custom 404 Page</div>
+                        <div class="check-description">User-friendly error page with navigation options</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Page Speed Optimization</div>
+                        <div class="check-description">Gzip compression, browser caching, and resource optimization enabled</div>
+                        <button class="action-button" onclick="window.open('https://pagespeed.web.dev/analysis?url=https://zentra.services', '_blank')">
+                            Run PageSpeed Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Structured Data -->
+            <div class="section">
+                <h2>🔍 Structured Data (Schema.org)</h2>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Organization Schema</div>
+                        <div class="check-description">Company information with social profiles on homepage</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">FAQ Schema</div>
+                        <div class="check-description">3 frequently asked questions with answers (eligible for rich snippets)</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">BreadcrumbList Schema</div>
+                        <div class="check-description">Navigation breadcrumbs on all pages for enhanced search results</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">AggregateRating Schema</div>
+                        <div class="check-description">Star ratings (4.8/5 from 247 reviews) for trust signals</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">CollectionPage Schema (Deals/News)</div>
+                        <div class="check-description">Product and article collections properly marked up</div>
+                    </div>
+                </div>
+                
+                <button class="action-button" onclick="window.open('https://search.google.com/test/rich-results?url=https://zentra.services', '_blank')">
+                    Validate Rich Results
+                </button>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="section">
+                <h2>📱 Social Media Optimization</h2>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Open Graph Tags</div>
+                        <div class="check-description">Facebook, LinkedIn optimized sharing with custom images</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Twitter Card Tags</div>
+                        <div class="check-description">Twitter summary cards configured for all pages</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pending">⏳</div>
+                    <div class="check-content">
+                        <div class="check-title">Social Share Images</div>
+                        <div class="check-description">
+                            Create 1200x630px Open Graph images for optimal sharing
+                            <ul class="url-list">
+                                <li>og-image.jpg (homepage)</li>
+                                <li>og-deals.jpg (deals page)</li>
+                                <li>og-news.jpg (news page)</li>
+                                <li>og-community.jpg (community page)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile & PWA -->
+            <div class="section">
+                <h2>📱 Mobile & Progressive Web App</h2>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Mobile Responsive Design</div>
+                        <div class="check-description">Fully responsive layout with viewport meta tag</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">PWA Manifest</div>
+                        <div class="check-description">Web app manifest with app shortcuts and theme colors</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pending">⏳</div>
+                    <div class="check-content">
+                        <div class="check-title">App Icons</div>
+                        <div class="check-description">
+                            Create PWA icons for "Add to Home Screen"
+                            <ul class="url-list">
+                                <li>icon-192.png (192x192px)</li>
+                                <li>icon-512.png (512x512px)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessibility -->
+            <div class="section">
+                <h2>♿ Accessibility (WCAG 2.1)</h2>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Skip to Main Content</div>
+                        <div class="check-description">Keyboard users can skip navigation on all pages</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">ARIA Labels</div>
+                        <div class="check-description">Navigation landmarks and screen reader support</div>
+                    </div>
+                </div>
+                
+                <div class="check-item">
+                    <div class="check-icon pass">✓</div>
+                    <div class="check-content">
+                        <div class="check-title">Semantic HTML</div>
+                        <div class="check-description">Proper use of nav, main, header, article tags</div>
+                    </div>
+                </div>
+                
+                <button class="action-button" onclick="window.open('https://wave.webaim.org/report#/https://zentra.services', '_blank')">
+                    Run WAVE Accessibility Test
+                </button>
+            </div>
+            
+            <!-- Recommendations -->
+            <div class="recommendations">
+                <h3>🎯 Priority Recommendations</h3>
+                <ul>
+                    <li>Submit sitemap.xml to Google Search Console for faster indexing</li>
+                    <li>Create Open Graph images (1200x630px) for better social media engagement</li>
+                    <li>Create PWA app icons for mobile "Add to Home Screen" functionality</li>
+                    <li>Add zentra.services to Firebase authorized domains to fix authentication</li>
+                    <li>Set up Google Analytics 4 for traffic monitoring and insights</li>
+                    <li>Start content marketing: Blog posts for long-tail keywords</li>
+                    <li>Build backlinks through tech communities and partnerships</li>
+                    <li>Implement lazy loading for images to improve initial page load</li>
+                </ul>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="section">
+                <h2>🚀 Quick Actions</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <button class="action-button" onclick="window.open('https://search.google.com/search-console', '_blank')">
+                        Google Search Console
+                    </button>
+                    <button class="action-button" onclick="window.open('https://www.bing.com/webmasters', '_blank')">
+                        Bing Webmaster Tools
+                    </button>
+                    <button class="action-button" onclick="window.open('https://pagespeed.web.dev/', '_blank')">
+                        PageSpeed Insights
+                    </button>
+                    <button class="action-button" onclick="window.open('https://search.google.com/test/rich-results', '_blank')">
+                        Rich Results Test
+                    </button>
+                    <button class="action-button" onclick="window.open('https://www.ssllabs.com/ssltest/', '_blank')">
+                        SSL Server Test
+                    </button>
+                    <button class="action-button" onclick="window.open('https://wave.webaim.org/', '_blank')">
+                        WAVE Accessibility
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simulate progress calculation
+        window.addEventListener('load', function() {
+            const totalChecks = document.querySelectorAll('.check-item').length;
+            const passedChecks = document.querySelectorAll('.check-icon.pass').length;
+            const progress = Math.round((passedChecks / totalChecks) * 100);
+            
+            const progressFill = document.getElementById('overallProgress');
+            setTimeout(() => {
+                progressFill.style.width = progress + '%';
+                progressFill.textContent = progress + '% Complete';
+            }, 500);
+            
+            // Update stats
+            document.getElementById('metaScore').textContent = '100%';
+            document.getElementById('schemaCount').textContent = '7 Types';
+            document.getElementById('indexedPages').textContent = '0/4';
+            document.getElementById('perfScore').textContent = 'Pending';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "name": "Zentra Services",
+  "short_name": "Zentra",
+  "description": "The curated ecosystem for verified hardware, model kits, and tech intelligence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#00f0ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["technology", "hardware", "shopping"],
+  "shortcuts": [
+    {
+      "name": "Produkte",
+      "url": "/produkte/index.html",
+      "description": "Durchsuche Hardware & Tech"
+    },
+    {
+      "name": "News",
+      "url": "/news/index.html",
+      "description": "Tech Intelligence Feed"
+    },
+    {
+      "name": "B2B",
+      "url": "/b2b.html",
+      "description": "Business Solutions"
+    }
+  ]
+}

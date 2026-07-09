@@ -1,0 +1,33 @@
+{
+  "architecture": {
+    "computing-workstation": {
+      "title": "Computing & Workstations",
+      "slug": "computing-workstation",
+      "description": "High-Performance Hardware für Creator, Gamer und Professionals. GPUs, CPUs und Server-Komponenten.",
+      "subcategories": [
+        { "id": "components", "title": "PC Komponenten", "keywords": ["Grafikkarte", "GPU", "Mainboard", "CPU", "RAM", "Gehäuse"] },
+        { "id": "peripherals", "title": "Peripherie & Input", "keywords": ["Tastatur", "Maus", "Monitor", "Headset", "Webcam"] },
+        { "id": "storage", "title": "Storage & Network", "keywords": ["SSD", "HDD", "NAS", "Server", "Router", "Switch"] }
+      ]
+    },
+    "maker-electronics": {
+      "title": "Maker & Electronics",
+      "slug": "maker-electronics",
+      "description": "Werkzeuge und Komponenten für Maker, Reparatur und Prototyping.",
+      "subcategories": [
+        { "id": "tools", "title": "Werkstatt & Tools", "keywords": ["Lötstation", "3D-Drucker", "Filament", "Messgerät", "Oszilloskop"] },
+        { "id": "components", "title": "Bauteile & Kits", "keywords": ["Arduino", "Raspberry Pi", "Sensor", "Aktor", "Entwicklungboard"] },
+        { "id": "rc-robotics", "title": "RC & Robotics", "keywords": ["Drohne", "Servo", "Motor", "Roboter"] }
+      ]
+    },
+    "software-security": {
+      "title": "Software & Security",
+      "slug": "software-security",
+      "description": "Digitale Infrastruktur, OS Lizenzen und Cybersecurity Lösungen.",
+      "subcategories": [
+        { "id": "security", "title": "Cybersecurity", "keywords": ["Antivirus", "VPN", "Firewall"] },
+        { "id": "productivity", "title": "Produktivität", "keywords": ["Office", "Windows", "Adobe", "CAD"] }
+      ]
+    }
+  }
+}

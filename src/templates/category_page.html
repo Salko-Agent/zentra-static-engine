@@ -1,0 +1,27 @@
+<div class="breadcrumbs">
+    <a href="/">Home</a> &gt; <a href="/produkte/">Produkte</a> &gt; {{ category_name }}
+</div>
+
+<section class="text-center mb-4">
+    <h1>{{ category_name }}</h1>
+    <p class="text-muted" style="max-width: 800px; margin: 0 auto;">{{ category_description }}</p>
+</section>
+
+<div class="glass-panel mb-4" style="padding: 1rem;">
+    <span class="text-muted" style="margin-right: 1rem;">Filter:</span>
+    <span class="badge">Alle Hersteller</span>
+    <span class="badge">Preis aufsteigend</span>
+</div>
+
+<div class="grid-products">
+    {{ product_grid }}
+</div>
+
+<div class="pagination">
+    {{ pagination }}
+</div>
+
+<section class="glass-panel mt-4">
+    <h3>Häufige Fragen zu {{ category_name }}</h3>
+    {{ faq_section }}
+</section>

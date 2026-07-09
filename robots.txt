@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /news/
+Allow: /produkte/
+
+# Disallow System & Build Files
+Disallow: /src/
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Disallow: /logs/
+Disallow: *.json
+Disallow: *.md
+Disallow: *.sh
+Disallow: *.js
+
+# Disallow Thin/Duplicate Content Parameters
+Disallow: /*?*
+Disallow: /*?sort=*
+Disallow: /*?filter=*
+Disallow: /*?search=*
+
+# Explicitly Disallow Old Categories (Zombie URL Protection)
+Disallow: /produkte/fashion-mode/
+Disallow: /produkte/beauty-drogerie/
+Disallow: /produkte/genuss-lifestyle/
+Disallow: /produkte/modellbau-hobby/
+
+# Sitemap
+Sitemap: https://zentra.services/sitemap_index.xml

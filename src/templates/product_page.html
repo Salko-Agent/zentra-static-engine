@@ -1,0 +1,59 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; margin-bottom: 2rem;">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+            <meta itemprop="position" content="1" />
+        </li>
+        <li aria-hidden="true">&gt;</li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="/produkte/"><span itemprop="name">Produkte</span></a>
+            <meta itemprop="position" content="2" />
+        </li>
+        <li aria-hidden="true">&gt;</li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="/produkte/{{ category_slug }}/"><span itemprop="name">{{ category_name }}</span></a>
+            <meta itemprop="position" content="3" />
+        </li>
+        <li aria-hidden="true">&gt;</li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">{{ product_name }}</span>
+            <meta itemprop="position" content="4" />
+        </li>
+    </ol>
+</nav>
+
+<div class="product-hero">
+    <div class="product-image-container">
+        <img src="{{ image_url }}" alt="{{ product_name }}" class="product-image" loading="lazy" decoding="async">
+    </div>
+    <div>
+        <span class="badge" style="margin-bottom: 1rem; color: var(--neon-blue); border: 1px solid var(--neon-blue);">{{ category_name }}</span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">{{ product_name }}</h1>
+        <div class="price-tag mb-4">{{ price }}</div>
+        
+        <div class="glass-card mb-4">
+            <p class="text-muted">{{ description }}</p>
+        </div>
+
+        <a href="{{ merchant_link }}" target="_blank" rel="nofollow noopener" class="btn btn-primary" style="width: 100%; text-align: center;">Zum Angebot</a>
+        <p class="text-muted text-center" style="font-size: 0.8rem; margin-top: 1rem;">*Werbelink</p>
+    </div>
+</div>
+
+<section class="glass-panel mb-4">
+    <h3>Technische Daten</h3>
+    <table class="specs-table">
+        {{ specs_table }}
+    </table>
+</section>
+
+<section>
+    <h3 class="mb-4">Ähnliche Produkte</h3>
+    <div class="grid-products">
+        {{ related_products }}
+    </div>
+</section>
+
+<script type="application/ld+json">
+{{ json_ld }}
+</script>

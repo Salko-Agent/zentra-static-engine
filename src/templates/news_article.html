@@ -1,0 +1,32 @@
+<article class="container mt-40 mb-40" style="max-width: 900px;">
+    <div class="card" style="padding: 40px; border-radius: 0;">
+        <header class="mb-40" style="border-bottom: 1px solid var(--border-glass); padding-bottom: 20px;">
+            <div class="flex-between mb-20">
+                <span class="badge cyan">{{ source }}</span>
+                <span class="text-mono text-sm text-secondary">{{ date }}</span>
+            </div>
+            <h1 class="mb-20" style="font-size: 2.5rem; line-height: 1.2;">{{ title }}</h1>
+            <div class="article-hero mb-20" style="border: 1px solid var(--border-glass);">
+                {{ image_html }}
+            </div>
+        </header>
+
+        <div class="article-content text-primary"
+            style="font-size: 1.1rem; line-height: 1.8; font-family: var(--font-body);">
+            {{ content_body }}
+        </div>
+
+        <div class="article-actions mt-40 pt-40 flex-center"
+            style="border-top: 1px solid var(--border-glass); gap: 20px;">
+            <a href="{{ORIGINAL_LINK}}" target="_blank" class="btn btn-primary">READ SOURCE <i
+                    class="fas fa-external-link-alt" style="margin-left: 10px;"></i></a>
+            <a href="/news/index.html" class="btn btn-secondary">RETURN TO INTEL</a>
+        </div>
+    </div>
+
+    <div class="mt-40">
+        {{COMMENTS_SECTION}}
+    </div>
+</article>
+
+{{SCHEMA_LD}}

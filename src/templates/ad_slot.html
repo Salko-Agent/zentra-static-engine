@@ -1,0 +1,33 @@
+<!-- AdSense Ad Slot Component - Fixed Height for CLS Prevention -->
+<div class="ad-slot-wrapper" style="min-height: {{AD_HEIGHT}}px; margin: {{AD_MARGIN}} 0;">
+    <ins class="adsbygoogle" style="display:block; min-height: {{AD_HEIGHT}}px;"
+        data-ad-client="ca-pub-9641197173417820" data-ad-slot="{{AD_SLOT_ID}}" data-ad-format="{{AD_FORMAT}}"
+        data-full-width-responsive="true"></ins>
+</div>
+
+<style>
+    .ad-slot-wrapper {
+        background: rgba(255, 255, 255, 0.01);
+        border: 1px dashed rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .ad-slot-wrapper::before {
+        content: 'Anzeige';
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .ad-slot-wrapper .adsbygoogle {
+        width: 100%;
+    }
+</style>

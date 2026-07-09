@@ -1,0 +1,78 @@
+<section class="text-center" style="padding: 6rem 0;">
+    <h1 style="margin-bottom: 1.5rem;">Präzision trifft <span style="color:var(--neon-blue)">Technik</span></h1>
+    <p class="text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 3rem;">
+        Entdecken Sie über 50.000 Produkte aus den Bereichen professioneller Modellbau, RC-Technik und IT-Infrastruktur.
+    </p>
+    <a href="/produkte/" class="btn btn-primary">Sortiment entdecken</a>
+</section>
+
+<section>
+    <h2 class="text-center mb-4">Unsere Kategorien</h2>
+    <div class="grid-categories">
+        {{ category_cards }}
+    </div>
+</section>
+
+<!-- LATEST INTEL (News Feed) -->
+<section class="mt-40">
+    <div class="flex-between mb-20">
+        <h2 class="gradient-text">Latest Intel</h2>
+        <a href="/news/index.html" class="text-cyan text-sm hover-underline">View All Intelligence</a>
+    </div>
+    <div id="hub-intel-grid" class="grid"
+        style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <!-- Injected via main.js -->
+        <div class="skeleton-pulse glass-panel" style="height: 200px;"></div>
+        <div class="skeleton-pulse glass-panel" style="height: 200px;"></div>
+        <div class="skeleton-pulse glass-panel" style="height: 200px;"></div>
+    </div>
+</section>
+
+<!-- NETWORK SPOTLIGHT (Community) -->
+<section class="mt-40 mb-40">
+    <div class="glass-panel p-40"
+        style="background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,240,255,0.05)); border: 1px solid var(--accent-cyan);">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div>
+                <span class="badge cyan mb-20">THE NETWORK</span>
+                <h2 class="mb-20">Showcase Your Craft</h2>
+                <p class="text-muted mb-30" style="font-size: 1.1rem;">
+                    Join the Zentra engineering community. Log your builds, share blueprints, and get feedback from
+                    verified experts.
+                </p>
+                <a href="/network/index.html" class="btn-primary">Enter The Network</a>
+            </div>
+
+            <!-- Spotlight Cards (Carousel/Grid) -->
+            <div id="network-spotlight" class="grid" style="grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                <!-- Injected via main.js -->
+                <div class="skeleton-pulse glass-panel" style="height: 150px;"></div>
+                <div class="skeleton-pulse glass-panel" style="height: 150px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="glass-panel mt-40">
+    <div class="grid-products" style="grid-template-columns: 1fr 1fr; align-items: center;">
+        <div>
+            <h2>Warum Zentra?</h2>
+            <p class="text-muted mb-4">
+                Wir sind spezialisiert auf die Bedürfnisse von anspruchsvollen Bastlern und IT-Profis.
+                Unser Sortiment ist handverlesen und fokussiert sich auf Qualität und Verfügbarkeit.
+                Kein Schnickschnack, nur das, was Sie für Ihr Projekt brauchen.
+            </p>
+            <ul style="list-style: none; color: var(--text-muted);">
+                <li style="margin-bottom: 0.5rem;">✓ Über 50.000 Artikel auf Lager</li>
+                <li style="margin-bottom: 0.5rem;">✓ Blitzschneller Versand</li>
+                <li style="margin-bottom: 0.5rem;">✓ Experten-Support</li>
+            </ul>
+        </div>
+        <div class="text-center">
+            <div class="glass-card" style="display: inline-block; padding: 3rem;">
+                <span style="font-size: 4rem; color: var(--neon-purple); display: block; font-weight: 800;">50k+</span>
+                <span class="text-muted">Produkte</span>
+            </div>
+        </div>
+    </div>
+</section>

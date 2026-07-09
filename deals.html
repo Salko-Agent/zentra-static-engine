@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Premium Tech Deals | Verified Electronics & Hardware Discounts | Zentra</title>
+    <meta name="title" content="Premium Tech Deals | Verified Electronics & Hardware Discounts | Zentra">
+    <meta name="description" content="Discover verified tech deals on laptops, gaming gear, monitors, GPUs, and more. Curated daily deals from trusted retailers with no spam or affiliate clutter.">
+    <meta name="keywords" content="tech deals, electronics deals, gaming deals, GPU deals, laptop deals, monitor deals, hardware discounts, verified deals, premium tech">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zentra.services/deals.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zentra.services/deals.html">
+    <meta property="og:title" content="Premium Tech Deals | Verified Electronics & Hardware Discounts">
+    <meta property="og:description" content="Discover verified tech deals on laptops, gaming gear, monitors, GPUs, and more.">
+    <meta property="og:image" content="https://zentra.services/og-deals.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="author" href="/humans.txt">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHYQK65Z0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJHYQK65Z0');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9641197173417820" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9641197173417820">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Premium Tech Deals",
+      "description": "Verified tech deals on electronics, gaming gear, and hardware",
+      "url": "https://zentra.services/deals.html",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://zentra.services/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Deals",
+            "item": "https://zentra.services/deals.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-content">
+            <div class="loader-logo">Zentra.Services</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar glass-panel" role="navigation" aria-label="Main navigation">
+        <div class="logo animated-logo">Zentra.Services</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="community.html">Community</a>
+            <a href="deals.html" class="active" aria-current="page">Deals</a>
+            <a href="news.html">News</a>
+        </div>
+        <div class="nav-actions">
+            <button id="login-btn" class="btn-primary">Login</button>
+            <div id="user-profile" class="hidden">
+                <img id="user-avatar" src="" alt="User">
+                <span id="user-name"></span>
+                <button id="logout-btn" class="btn-secondary small">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Deals Hero -->
+    <header class="deals-hero fade-in-up">
+        <div class="hero-content compact">
+            <h1 class="hero-title small">Curated <span class="gradient-text">Artifacts</span></h1>
+            <p class="hero-subtitle">Verified hardware and software deals. No spam, just value.</p>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <main id="main-content" class="section-container deals-layout">
+        
+        <!-- Sidebar Filters -->
+        <aside class="deals-sidebar fade-in-up delay-1">
+            <div class="glass-panel filter-panel">
+                <div class="search-box" style="margin-bottom: 24px;">
+                    <input type="text" id="deal-search" placeholder="Search products..." style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 8px; outline: none;">
+                </div>
+                <h3>Categories</h3>
+                <ul class="filter-list">
+                    <li><label><input type="checkbox" checked> All Categories</label></li>
+                    <li><label><input type="checkbox"> Bathroom & Plumbing</label></li>
+                    <li><label><input type="checkbox"> Health & Beauty</label></li>
+                    <li><label><input type="checkbox"> Home & Garden</label></li>
+                    <li><label><input type="checkbox"> Jewellery & Watches</label></li>
+                    <li><label><input type="checkbox"> Pet Supplies</label></li>
+                    <li><label><input type="checkbox"> Electronics</label></li>
+                    <li><label><input type="checkbox"> Clothing & Accessories</label></li>
+                    <li><label><input type="checkbox"> Sports & Outdoors</label></li>
+                    <li><label><input type="checkbox"> Food & Beverages</label></li>
+                </ul>
+                
+                <h3 class="mt-4">Price Range</h3>
+                <div class="price-slider">
+                    <input type="range" min="0" max="2000" value="1000" class="slider">
+                    <div class="price-labels">
+                        <span>$0</span>
+                        <span>$2000+</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Deals Grid Area -->
+        <div class="deals-content fade-in-up delay-2">
+            
+            <!-- Featured Deal (Spotlight) -->
+            <div class="featured-deal glass-panel">
+                <div class="featured-badge">Deal of the Day</div>
+                <div class="featured-image gradient-1"></div>
+                <div class="featured-info">
+                    <div class="deal-meta">
+                        <span class="tag">Hardware</span>
+                        <span class="timer">Ends in 04:23:12</span>
+                    </div>
+                    <h2>NVIDIA GeForce RTX 4080 Super</h2>
+                    <p class="deal-desc">The best price-to-performance ratio for high-end 4K gaming currently available on the market.</p>
+                    <div class="price-block">
+                        <span class="old-price">$1,199</span>
+                        <span class="new-price">$949</span>
+                        <span class="discount">-21%</span>
+                    </div>
+                    <button class="btn-primary full-width">View Offer</button>
+                </div>
+            </div>
+
+            <!-- Standard Grid -->
+            <div class="deals-grid">
+                <!-- Deal 1 -->
+                <div class="tech-card deal-card">
+                    <div class="card-image-placeholder gradient-2"></div>
+                    <div class="card-content glass-inner">
+                        <div class="deal-header">
+                            <span class="tag">Keyboard</span>
+                            <span class="discount-badge">-15%</span>
+                        </div>
+                        <h3>Keychron Q1 Pro Wireless</h3>
+                        <div class="price-row">
+                            <span class="current-price">$169</span>
+                            <span class="original-price">$199</span>
+                        </div>
+                        <button class="btn-secondary small full-width mt-2">Get Deal</button>
+                    </div>
+                </div>
+
+                <!-- Deal 2 -->
+                <div class="tech-card deal-card">
+                    <div class="card-image-placeholder gradient-3"></div>
+                    <div class="card-content glass-inner">
+                        <div class="deal-header">
+                            <span class="tag">Audio</span>
+                            <span class="discount-badge">-30%</span>
+                        </div>
+                        <h3>Sennheiser HD 660S2</h3>
+                        <div class="price-row">
+                            <span class="current-price">$419</span>
+                            <span class="original-price">$599</span>
+                        </div>
+                        <button class="btn-secondary small full-width mt-2">Get Deal</button>
+                    </div>
+                </div>
+
+                <!-- Deal 3 -->
+                <div class="tech-card deal-card">
+                    <div class="card-image-placeholder gradient-1"></div>
+                    <div class="card-content glass-inner">
+                        <div class="deal-header">
+                            <span class="tag">Monitor</span>
+                            <span class="discount-badge">-10%</span>
+                        </div>
+                        <h3>LG 27GR95QE-B OLED</h3>
+                        <div class="price-row">
+                            <span class="current-price">$899</span>
+                            <span class="original-price">$999</span>
+                        </div>
+                        <button class="btn-secondary small full-width mt-2">Get Deal</button>
+                    </div>
+                </div>
+
+                <!-- Deal 4 -->
+                <div class="tech-card deal-card">
+                    <div class="card-image-placeholder gradient-2"></div>
+                    <div class="card-content glass-inner">
+                        <div class="deal-header">
+                            <span class="tag">Storage</span>
+                            <span class="discount-badge">-40%</span>
+                        </div>
+                        <h3>Samsung 990 PRO 2TB</h3>
+                        <div class="price-row">
+                            <span class="current-price">$129</span>
+                            <span class="original-price">$219</span>
+                        </div>
+                        <button class="btn-secondary small full-width mt-2">Get Deal</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+<footer style="background: linear-gradient(180deg, rgba(19, 19, 22, 0.95) 0%, rgba(10, 10, 15, 0.98) 100%); border-top: 1px solid rgba(0, 240, 255, 0.1); margin-top: 80px; padding: 60px 0 30px 0;">
+    <div class="container">
+        <!-- Main Footer Content -->
+        <div class="grid" style="grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;">
+            
+            <!-- Brand Column -->
+            <div>
+                <div class="footer-logo" style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #ffffff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0;">
+                        ZENTRA<span style="color: var(--accent-cyan);">.SERVICES</span>
+                    </h3>
+                </div>
+                <p class="text-muted" style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px; max-width: 320px;">
+                    The curated ecosystem for verified hardware, precision makers, and tech intelligence. Built by professionals, for professionals.
+                </p>
+                <div class="social-links" style="display: flex; gap: 15px; margin-top: 25px;">
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-twitter" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-linkedin" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-github" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-discord" style="font-size: 1.1rem;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Platform Links -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-rocket" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    PLATFORM
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/news/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-newspaper" style="width: 16px;"></i> Tech Intel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/produkte/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-box-open" style="width: 16px;"></i> Supply Depot
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/b2b.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-briefcase" style="width: 16px;"></i> B2B Solutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/newsletter.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-envelope" style="width: 16px;"></i> Newsletter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Resources -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-book" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    RESOURCES
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/about.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-info-circle" style="width: 16px;"></i> About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/kontakt.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-headset" style="width: 16px;"></i> Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/faq.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-question-circle" style="width: 16px;"></i> FAQ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Legal -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-shield-alt" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    LEGAL
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/datenschutz.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-user-shield" style="width: 16px;"></i> Privacy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/impressum.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-gavel" style="width: 16px;"></i> Impressum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/affiliate-offenlegung.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-file-contract" style="width: 16px;"></i> Disclosure
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div style="border-top: 1px solid rgba(0, 240, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-copyright"></i>
+                <span>2026 BMS Digital Solutions. All Rights Reserved.</span>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">Made with</span>
+                <i class="fas fa-heart" style="color: #ff6ec7; font-size: 0.9rem; animation: heartbeat 1.5s ease-in-out infinite;"></i>
+                <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">in Austria</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    @keyframes heartbeat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+    @media (max-width: 1024px) {
+        footer .grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 640px) {
+        footer .grid { grid-template-columns: 1fr !important; }
+    }
+</style>
+
+    <footer>
+        <section class="affiliate-disclaimer" style="max-width: 1200px; margin: 0 auto 1rem; padding: 0 1rem; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+            <p>Zentra is a curated discovery platform powered by affiliate partnerships. Some of the links on this page are affiliate links. This means we may earn a commission if you click a link and make a purchase – at no extra cost to you. Powered by BMS Digital Solutions.</p>
+        </section>
+        <p>&copy; 2025 Zentra. Built by BMS Digital Solutions.</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

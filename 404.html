@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Seite nicht gefunden | Zentra Services</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHYQK65Z0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJHYQK65Z0');
+        gtag('event', 'page_404', {'page_location': window.location.href});
+    </script>
+    
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .error-code {
+            font-size: 10rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .error-search {
+            margin: 40px 0;
+            max-width: 600px;
+            width: 100%;
+        }
+        .error-search input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .error-search input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0,240,255,0.2);
+        }
+        .error-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .popular-categories {
+            margin-top: 60px;
+            max-width: 800px;
+        }
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .cat-link {
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .cat-link:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0,240,255,0.05);
+            transform: translateY(-5px);
+        }
+        .cat-icon {
+            font-size: 2.5rem;
+        }
+        .cat-name {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 768px) {
+            .error-code { font-size: 6rem; }
+            .error-message { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas" style="position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; opacity: 0.8; pointer-events: none;"></canvas>
+    
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-message">SIGNAL_LOST</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin-bottom: 20px; font-size: 1.1rem;">
+            Die angeforderte Seite existiert nicht oder wurde verschoben.<br>
+            Nutze die Suche oder navigiere über die Links zurück.
+        </p>
+        
+        <!-- Search -->
+        <div class="error-search">
+            <input type="text" id="404-search" placeholder="🔍 Produkt suchen..." onkeypress="if(event.key==='Enter'){window.location.href='/index.html#search=' + encodeURIComponent(this.value)}">
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="error-links">
+            <a href="/index.html" class="btn btn-primary">🏠 Zurück zur Homepage</a>
+            <a href="/produkte/index.html" class="btn btn-secondary">🛒 Alle Produkte</a>
+            <a href="/news/index.html" class="btn btn-secondary">📰 Tech News</a>
+        </div>
+
+        <!-- Popular Categories -->
+        <div class="popular-categories">
+            <h3 class="text-cyan" style="font-size: 1.2rem; margin-bottom: 10px;">Beliebte Kategorien</h3>
+            <div class="cat-grid">
+                <a href="/produkte/model-kits/index.html" class="cat-link">
+                    <div class="cat-icon">✈️</div>
+                    <div class="cat-name">Model Kits</div>
+                </a>
+                <a href="/produkte/tech/index.html" class="cat-link">
+                    <div class="cat-icon">💻</div>
+                    <div class="cat-name">Tech</div>
+                </a>
+                <a href="/produkte/hardware/index.html" class="cat-link">
+                    <div class="cat-icon">🔧</div>
+                    <div class="cat-name">Hardware</div>
+                </a>
+                <a href="/produkte/audio/index.html" class="cat-link">
+                    <div class="cat-icon">🎧</div>
+                    <div class="cat-name">Audio</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Help Text -->
+        <p style="color: var(--text-muted); margin-top: 60px; font-size: 0.9rem;">
+            Problem melden? <a href="/kontakt.html" class="text-cyan hover-underline">Kontakt aufnehmen</a>
+        </p>
+    </div>
+
+    <script src="/assets/js/particles.js"></script>
+    <script>
+        // Focus search on load
+        document.getElementById('404-search').focus();
+        
+        // Track 404 with referrer
+        if (document.referrer) {
+            gtag('event', 'exception', {
+                'description': 'Page 404: ' + window.location.pathname,
+                'fatal': false
+            });
+        }
+    </script>
+</body>
+</html>
+        <div class="error-links">
+            <a href="/" class="btn-primary">Go Home</a>
+            <a href="/deals.html" class="btn-secondary">Browse Deals</a>
+            <a href="/news.html" class="btn-secondary">Read News</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "products": [
+        "rtx-4090",
+        "bambulab-x1-carbon",
+        "flipper-zero"
+    ],
+    "categories": [
+        "hardware",
+        "maker-gear"
+    ]
+}

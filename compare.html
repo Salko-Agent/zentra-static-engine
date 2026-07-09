@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gear Compare | Zentra Services</title>
+    <meta name="description" content="Compare workstations, components, and maker tools side-by-side.">
+    
+    <link rel="stylesheet" href="/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9641197173417820" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .compare-grid {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .compare-cell {
+            /* border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05); */
+        }
+        .label-col {
+            background: rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="nav-bar glass-panel">
+        <a href="/index.html" class="logo animated-logo">Zentra<span>.Services</span></a>
+        <div class="nav-links">
+            <a href="/index.html">HUB</a>
+            <a href="/produkte/computing-workstation/index.html">COMPUTING</a>
+            <a href="/produkte/maker-electronics/index.html">MAKER</a>
+            <a href="/news/index.html">INTEL</a>
+        </div>
+        <div class="nav-actions">
+           <a href="/compare.html" class="btn-secondary relative">
+                <i class="fas fa-balance-scale"></i>
+                <span class="compare-count-badge" id="compare-count" style="position: absolute; top: -5px; right: -5px; background: var(--accent-cyan); color: #000; font-size: 0.7rem; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; display: none;">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="container mt-60 mb-60" style="min-height: 70vh;">
+        <header class="mb-40 text-center">
+            <h1 class="gradient-text" style="font-size: 3rem;">Tactical Comparison</h1>
+            <p class="text-muted">Side-by-side analysis of your selected gear.</p>
+        </header>
+
+        <div id="compare-container">
+            <!-- JS Renders here -->
+        </div>
+
+    </main>
+
+    <script src="/src/js/compare.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

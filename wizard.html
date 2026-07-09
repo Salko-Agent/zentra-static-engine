@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Configurator | Zentra Services</title>
+    <meta name="description" content="Configure your workstation or gaming rig with verified components.">
+    
+    <link rel="stylesheet" href="/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9641197173417820" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .wizard-option {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .wizard-option:hover, .wizard-option.selected {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="nav-bar glass-panel">
+        <a href="/index.html" class="logo animated-logo">Zentra<span>.Services</span></a>
+        <div class="nav-links">
+            <a href="/index.html">HUB</a>
+            <a href="/produkte/computing-workstation/index.html">COMPUTING</a>
+            <a href="/produkte/maker-electronics/index.html">MAKER</a>
+            <a href="/news/index.html">INTEL</a>
+        </div>
+        <div class="nav-actions">
+           <a href="/compare.html" class="btn-secondary relative icon-btn">
+                <i class="fas fa-balance-scale"></i>
+            </a>
+        </div>
+    </nav>
+
+    <main class="container mt-60 mb-60" style="min-height: 80vh;">
+        
+        <div id="wizard-intro" class="max-w-2xl mx-auto">
+            <header class="text-center mb-10">
+                <div class="badge-pill mb-4 mx-auto">ALPHA PROTOCOL</div>
+                <h1 class="gradient-text text-4xl mb-4">SYSTEM CONFIGURATOR</h1>
+                <p class="text-muted">Defining your mission parameters to locate optimal hardware.</p>
+            </header>
+
+            <form id="wizard-form" class="glass-panel p-8">
+                <!-- Step 1 -->
+                <div class="mb-8">
+                    <label class="block text-white text-lg font-bold mb-4">1. Primary Operation</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <select id="usage-select" class="w-full bg-black/50 border border-gray-700 rounded p-4 text-white focus:border-cyan outline-none" style="width: 100%; color: white; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass);">
+                            <option value="gaming">Gaming & Simulation</option>
+                            <option value="workstation">Creative Workstation (Video/3D)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="mb-8">
+                    <label class="block text-white text-lg font-bold mb-4">2. Performance Tier</label>
+                    <select id="tier-select" class="w-full bg-black/50 border border-gray-700 rounded p-4 text-white focus:border-cyan outline-none" style="width: 100%; color: white; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass);">
+                        <option value="entry">Entry Level (1080p / High Efficiency)</option>
+                        <option value="mid">Mid-Range (1440p / Balanced)</option>
+                        <option value="high">Enthusiast (4K / Maximum Power)</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="generate-btn" class="btn-primary full-width" style="width: 100%; padding: 15px; font-size: 1.2rem; text-align: center;">
+                    GENERATE BLUEPRINT
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Area -->
+        <div id="results-area" class="hidden">
+            <header class="text-center mb-10">
+                <h1 class="gradient-text text-3xl mb-2">MISSION BLUEPRINT</h1>
+                <p class="text-muted">Matching verified supply found in database.</p>
+            </header>
+            
+            <div id="wizard-results"></div>
+        </div>
+
+    </main>
+
+    <script src="/src/js/wizard.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

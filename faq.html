@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Häufig gestellte Fragen | Zentra Services</title>
+    <meta name="description" content="Antworten auf häufig gestellte Fragen zu Zentra Services - Produkte, Versand, Partnerschaften und mehr.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zentra.services/faq.html">
+    <meta property="og:title" content="FAQ - Häufig gestellte Fragen | Zentra Services">
+    <meta property="og:description" content="Antworten auf häufig gestellte Fragen zu Zentra Services - Produkte, Versand, Partnerschaften und mehr.">
+    <meta property="og:image" content="https://zentra.services/assets/images/og-default.jpg">
+    <meta property="og:site_name" content="Zentra - Tech & Hardware">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zentra.services/faq.html">
+    <meta name="twitter:title" content="FAQ - Häufig gestellte Fragen | Zentra Services">
+    <meta name="twitter:description" content="Antworten auf häufig gestellte Fragen zu Zentra Services - Produkte, Versand, Partnerschaften und mehr.">
+    <meta name="twitter:image" content="https://zentra.services/assets/images/og-default.jpg">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHYQK65Z0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SJHYQK65Z0');
+    </script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Was ist Zentra Services?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zentra Services ist deine kuratierte Plattform für Hardware, Tech-Produkte und Modellbau. Wir durchsuchen und vergleichen tausende Angebote, damit du die besten Deals findest."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wer steckt hinter Zentra?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ich bin Salih, Gründer und Entwickler von Zentra Services. Mit über 10 Jahren Erfahrung in Webentwicklung und E-Commerce habe ich diese Plattform gebaut."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wie kann ich über Zentra kaufen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zentra ist ein Preisvergleich. Wenn du auf 'Zum Angebot' klickst, wirst du direkt zum Händler weitergeleitet. Der Kauf läuft über den jeweiligen Händler."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Verdient Zentra an Affiliate-Links?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ja. Wenn du über unseren Link kaufst, erhalten wir eine kleine Provision vom Händler. Für dich entstehen keine Mehrkosten."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Sind alle Produkte verfügbar?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wir aktualisieren unsere Datenbank täglich. Die finale Verfügbarkeit siehst du beim jeweiligen Händler."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wie sicher sind meine Daten?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zentra speichert keine persönlichen Daten. Wir nutzen nur anonyme Analytics. Deine Kaufdaten verarbeitet ausschließlich der Händler."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="particle-canvas" style="position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; opacity: 0.8; pointer-events: none;"></canvas>
+
+    <nav class="navbar">
+        <div class="container flex-between" style="height: 100%;">
+            <a href="/index.html" class="nav-logo">ZENTRA<span>.SERVICES</span></a>
+            <div class="nav-links hidden-mobile">
+                <a href="/index.html" class="nav-link">HUB</a>
+                <a href="/news/index.html" class="nav-link">INTEL</a>
+                <a href="/produkte/index.html" class="nav-link">SUPPLY</a>
+                <a href="/b2b.html" class="nav-link">B2B</a>
+            </div>
+            <div class="nav-actions flex-center" style="gap: 15px;">
+                <button id="search-trigger" class="btn-secondary" style="padding: 8px;">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container mt-100">
+        <div class="text-center mb-60">
+            <span class="badge cyan mb-20">KNOWLEDGE_BASE</span>
+            <h1 class="gradient-text" style="font-size: 3.5rem; margin-bottom: 20px;">Häufig gestellte Fragen</h1>
+            <p class="text-muted" style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+                Transparente Antworten auf die wichtigsten Fragen zu Zentra Services.
+            </p>
+        </div>
+
+        <div class="faq-container" style="max-width: 900px; margin: 0 auto;">
+            
+            <!-- Allgemein -->
+            <div class="glass-panel mb-30" style="padding: 40px;">
+                <h2 class="text-cyan mb-30" style="font-size: 1.8rem;">🎯 Allgemein</h2>
+                
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Was ist Zentra Services?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Zentra Services ist eine kuratierte Plattform für Tech-Enthusiasten, Maker und Hardware-Profis. 
+                        Wir bieten strukturierte Produktvergleiche, Tech-News und ehrliche Bewertungen – ohne Clickbait, 
+                        ohne Bullshit. Jedes Produkt wird nach technischer Relevanz und realem Nutzen ausgewählt, nicht nach Provision.
+                    </p>
+                </div>
+
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Wer steckt hinter Zentra?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Zentra wurde von Salih gegründet, einem Technik-Enthusiasten mit über 10 Jahren Erfahrung in 
+                        Webentwicklung, Performance-Optimierung und datengetriebenen Systemen. Mehr dazu auf der 
+                        <a href="/about.html" class="text-cyan hover-underline">Über mich</a> Seite.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Ist Zentra kostenlos?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Ja, die Nutzung von Zentra Services ist komplett kostenlos. Wir finanzieren uns über 
+                        Affiliate-Partnerschaften, ohne dass dir dadurch Mehrkosten entstehen.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Produkte & Preise -->
+            <div class="glass-panel mb-30" style="padding: 40px;">
+                <h2 class="text-cyan mb-30" style="font-size: 1.8rem;">🛒 Produkte & Preise</h2>
+                
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Verkauft Zentra die Produkte selbst?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Nein. Zentra ist ein Preisvergleichs- und Kuratierungsportal. Wir zeigen dir die besten Angebote 
+                        von verifizierten Händlern (z.B. Amazon, MediaMarkt, Conrad). Der Kauf findet direkt beim jeweiligen 
+                        Händler statt.
+                    </p>
+                </div>
+
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Sind die Preise aktuell?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Ja. Unsere Produktdaten werden täglich automatisch aktualisiert über die AWIN Affiliate-API. 
+                        In seltenen Fällen kann es zu minimalen Verzögerungen kommen – der finale Preis wird dir immer 
+                        im Shop des Händlers angezeigt.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Wie wählt ihr Produkte aus?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Nach technischer Relevanz, Use-Case-Potenzial und echtem Nutzen. Wir filtern nicht nach höchster 
+                        Provision, sondern nach Qualität. Produkte werden in Kontext gesetzt (Trends, Performance, Einsatzgebiete).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Affiliate & Provisionen -->
+            <div class="glass-panel mb-30" style="padding: 40px;">
+                <h2 class="text-cyan mb-30" style="font-size: 1.8rem;">💰 Affiliate & Transparenz</h2>
+                
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Was sind Affiliate-Links?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Affiliate-Links sind markierte Produkt-Links (mit <code style="background: rgba(0,240,255,0.1); padding: 2px 6px; border-radius: 4px; color: var(--accent-cyan);">rel="sponsored"</code>). 
+                        Wenn du über diesen Link kaufst, erhalten wir eine kleine Provision vom Händler – ohne dass dir 
+                        Mehrkosten entstehen. So finanzieren wir die Plattform.
+                    </p>
+                </div>
+
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Beeinflusst die Provision eure Empfehlungen?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        <strong style="color: white;">Nein.</strong> Wir empfehlen nur Produkte, die wir selbst für technisch 
+                        relevant halten. Wenn ein Produkt Schrott ist, wird es nicht gelistet – egal wie hoch die Provision wäre.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Kann ich Zentra ohne Affiliate-Links nutzen?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Klar! Du kannst die Produktnamen einfach selbst bei Google suchen. Aber: Mit unseren Links unterstützt 
+                        du die Plattform, ohne selbst mehr zu zahlen. Win-Win.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Versand & Retouren -->
+            <div class="glass-panel mb-30" style="padding: 40px;">
+                <h2 class="text-cyan mb-30" style="font-size: 1.8rem;">📦 Versand & Retouren</h2>
+                
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Wer kümmert sich um Versand und Retouren?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Der jeweilige Händler, bei dem du kaufst. Zentra selbst verschickt keine Produkte. 
+                        Versandkosten, Lieferzeiten und Rückgabebedingungen findest du im Shop des Händlers.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Ich habe ein Problem mit meiner Bestellung. Hilft Zentra?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Wende dich bitte direkt an den Händler (z.B. Amazon-Support, MediaMarkt-Kundenservice). 
+                        Wir können bei Bestellproblemen nicht direkt helfen, da wir kein Zugriff auf Händler-Systeme haben.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Technisches & Datenschutz -->
+            <div class="glass-panel mb-30" style="padding: 40px;">
+                <h2 class="text-cyan mb-30" style="font-size: 1.8rem;">🔒 Technisches & Datenschutz</h2>
+                
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Welche Daten sammelt Zentra?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Wir nutzen Google Analytics (anonymisiert) für Traffic-Analyse und Google AdSense für Werbung. 
+                        Details findest du in unserer <a href="/datenschutz.html" class="text-cyan hover-underline">Datenschutzerklärung</a>.
+                    </p>
+                </div>
+
+                <div class="faq-item mb-40">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Ist die Seite sicher?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Ja. Zentra läuft über HTTPS, nutzt Content Security Policies und wird regelmäßig auf Sicherheitslücken geprüft. 
+                        Alle Affiliate-Links sind als <code style="background: rgba(0,240,255,0.1); padding: 2px 6px; border-radius: 4px; color: var(--accent-cyan);">nofollow sponsored</code> markiert.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 15px;">Wie schnell ist die Seite?</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        Sehr schnell. Wir nutzen Lazy Loading, optimierte Bilder, minimales JavaScript und statische HTML-Generierung. 
+                        Ziel: Sub-2s Ladezeit, auch auf Mobile.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-60 mb-60">
+            <p class="text-muted mb-20">Frage nicht beantwortet?</p>
+            <a href="/kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+        </div>
+
+    </main>
+
+<footer style="background: linear-gradient(180deg, rgba(19, 19, 22, 0.95) 0%, rgba(10, 10, 15, 0.98) 100%); border-top: 1px solid rgba(0, 240, 255, 0.1); margin-top: 80px; padding: 60px 0 30px 0;">
+    <div class="container">
+        <!-- Main Footer Content -->
+        <div class="grid" style="grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;">
+            
+            <!-- Brand Column -->
+            <div>
+                <div class="footer-logo" style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #ffffff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0;">
+                        ZENTRA<span style="color: var(--accent-cyan);">.SERVICES</span>
+                    </h3>
+                </div>
+                <p class="text-muted" style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px; max-width: 320px;">
+                    The curated ecosystem for verified hardware, precision makers, and tech intelligence. Built by professionals, for professionals.
+                </p>
+                <div class="social-links" style="display: flex; gap: 15px; margin-top: 25px;">
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-twitter" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-linkedin" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-github" style="font-size: 1.1rem;"></i>
+                    </a>
+                    <a href="#" class="social-link" style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,240,255,0.2)'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(0,240,255,0.1)'; this.style.transform='translateY(0)';">
+                        <i class="fab fa-discord" style="font-size: 1.1rem;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Platform Links -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-rocket" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    PLATFORM
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/news/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-newspaper" style="width: 16px;"></i> Tech Intel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/produkte/index.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-box-open" style="width: 16px;"></i> Supply Depot
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/b2b.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-briefcase" style="width: 16px;"></i> B2B Solutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/newsletter.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-envelope" style="width: 16px;"></i> Newsletter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Resources -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-book" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    RESOURCES
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/about.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-info-circle" style="width: 16px;"></i> About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/kontakt.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-headset" style="width: 16px;"></i> Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/faq.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-question-circle" style="width: 16px;"></i> FAQ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Legal -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-shield-alt" style="color: var(--accent-cyan); font-size: 1rem;"></i>
+                    LEGAL
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li>
+                        <a href="/datenschutz.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-user-shield" style="width: 16px;"></i> Privacy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/impressum.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-gavel" style="width: 16px;"></i> Impressum
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/affiliate-offenlegung.html" class="footer-link" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='var(--accent-cyan)'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255,255,255,0.6)'; this.style.transform='translateX(0)';">
+                            <i class="fas fa-file-contract" style="width: 16px;"></i> Disclosure
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div style="border-top: 1px solid rgba(0, 240, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-copyright"></i>
+                <span>2026 BMS Digital Solutions. All Rights Reserved.</span>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">Made with</span>
+                <i class="fas fa-heart" style="color: #ff6ec7; font-size: 0.9rem; animation: heartbeat 1.5s ease-in-out infinite;"></i>
+                <span style="color: rgba(255, 255, 255, 0.3); font-size: 0.8rem;">in Austria</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    @keyframes heartbeat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+    @media (max-width: 1024px) {
+        footer .grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 640px) {
+        footer .grid { grid-template-columns: 1fr !important; }
+    }
+</style>
+
+    <script src="/assets/js/particles.js"></script>
+    <script src="/assets/js/tracking.js"></script>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-secondary mb-20">Legal</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-10"><a href="/impressum.html" class="text-muted hover-cyan text-sm">Impressum</a></li>
+                        <li class="mb-10"><a href="/datenschutz.html" class="text-muted hover-cyan text-sm">Datenschutz</a></li>
+                        <li class="mb-10"><a href="/faq.html" class="text-muted hover-cyan text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-40 pt-40" style="border-top: 1px solid var(--border-glass);">
+                <p class="text-muted text-xs">© 2026 Zentra Services. Built with precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/particles.js"></script>
+    <script src="/assets/js/tracking.js"></script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist Zentra Services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zentra Services ist eine kuratierte Plattform für Tech-Enthusiasten, Maker und Hardware-Profis. Wir bieten strukturierte Produktvergleiche, Tech-News und ehrliche Bewertungen – ohne Clickbait, ohne Bullshit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Verkauft Zentra die Produkte selbst?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Zentra ist ein Preisvergleichs- und Kuratierungsportal. Wir zeigen dir die besten Angebote von verifizierten Händlern. Der Kauf findet direkt beim jeweiligen Händler statt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sind die Preise aktuell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Unsere Produktdaten werden täglich automatisch aktualisiert über die AWIN Affiliate-API. Der finale Preis wird dir immer im Shop des Händlers angezeigt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was sind Affiliate-Links?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Affiliate-Links sind markierte Produkt-Links. Wenn du über diesen Link kaufst, erhalten wir eine kleine Provision vom Händler – ohne dass dir Mehrkosten entstehen. So finanzieren wir die Plattform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Beeinflusst die Provision eure Empfehlungen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Wir empfehlen nur Produkte, die wir selbst für technisch relevant halten. Wenn ein Produkt Schrott ist, wird es nicht gelistet – egal wie hoch die Provision wäre."
+          }
+        }
+      ]
+    }
+    </script>
+</body>
+</html>

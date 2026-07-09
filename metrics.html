@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics Dashboard | Zentra</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        .metric-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color, #00f0ff);
+        }
+
+        .metric-card.warning::before {
+            background: #ffc800;
+        }
+
+        .metric-card.danger::before {
+            background: #ff6b6b;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: #00f0ff;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .metric-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .metric-change.positive {
+            color: #00ff00;
+        }
+
+        .metric-change.negative {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-40 mb-80">
+
+        <div class="mb-60">
+            <h1 style="font-size: 3rem; margin-bottom: 10px;">Metrics Dashboard</h1>
+            <p class="text-muted">Real-time performance overview</p>
+        </div>
+
+        <!-- SEO Metrics -->
+        <div class="mb-50">
+            <h2 style="font-size: 1.5rem; margin-bottom: 30px; color: #00f0ff;">📊 SEO Performance</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+
+                <div class="metric-card">
+                    <div class="metric-label">Index Coverage</div>
+                    <div class="metric-value" id="index-coverage">--</div>
+                    <div class="metric-change positive">
+                        <span>↑ 2.3%</span>
+                        <span class="text-xs text-muted">vs. last week</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Crawl Errors</div>
+                    <div class="metric-value" id="crawl-errors">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 0</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Organic Sessions</div>
+                    <div class="metric-value" id="organic-sessions">--</div>
+                    <div class="metric-change positive">
+                        <span>↑ 12.5%</span>
+                        <span class="text-xs text-muted">vs. last month</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Avg CTR</div>
+                    <div class="metric-value" id="avg-ctr">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 5%</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Affiliate Metrics -->
+        <div class="mb-50">
+            <h2 style="font-size: 1.5rem; margin-bottom: 30px; color: #00f0ff;">💰 Affiliate Performance (AWIN)</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+
+                <div class="metric-card">
+                    <div class="metric-label">Clicks (24h)</div>
+                    <div class="metric-value" id="affiliate-clicks">--</div>
+                    <div class="metric-change positive">
+                        <span>↑ 8.2%</span>
+                        <span class="text-xs text-muted">vs. yesterday</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">EPC</div>
+                    <div class="metric-value" id="epc">--</div>
+                    <div class="text-xs text-muted mt-10">Target: €0.50</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Revenue (Month)</div>
+                    <div class="metric-value" id="affiliate-revenue">--</div>
+                    <div class="text-xs text-muted mt-10">Target: €5,000</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Conversion Rate</div>
+                    <div class="metric-value" id="conversion-rate">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 3%</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- AdSense Metrics -->
+        <div class="mb-50">
+            <h2 style="font-size: 1.5rem; margin-bottom: 30px; color: #00f0ff;">📈 AdSense Performance</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+
+                <div class="metric-card">
+                    <div class="metric-label">RPM</div>
+                    <div class="metric-value" id="adsense-rpm">--</div>
+                    <div class="text-xs text-muted mt-10">Target: €3.00</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Ad CTR</div>
+                    <div class="metric-value" id="adsense-ctr">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 1%</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Consent Rate</div>
+                    <div class="metric-value" id="consent-rate">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 70%</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Earnings (Month)</div>
+                    <div class="metric-value" id="adsense-earnings">--</div>
+                    <div class="text-xs text-muted mt-10">Target: €1,000</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- B2B Metrics -->
+        <div class="mb-50">
+            <h2 style="font-size: 1.5rem; margin-bottom: 30px; color: #00f0ff;">🏢 B2B Performance</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+
+                <div class="metric-card">
+                    <div class="metric-label">Leads (Month)</div>
+                    <div class="metric-value" id="b2b-leads">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 20</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Lead Quality</div>
+                    <div class="metric-value" id="lead-quality">--</div>
+                    <div class="text-xs text-muted mt-10">Target: 60%</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">B2B Revenue</div>
+                    <div class="metric-value" id="b2b-revenue">--</div>
+                    <div class="text-xs text-muted mt-10">Target: €10,000</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card" style="padding: 30px;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Quick Actions</h3>
+            <div class="flex-center" style="gap: 15px; justify-content: flex-start; flex-wrap: wrap;">
+                <a href="https://search.google.com/search-console" target="_blank" class="btn btn-secondary">
+                    Search Console →
+                </a>
+                <a href="https://analytics.google.com" target="_blank" class="btn btn-secondary">
+                    GA4 →
+                </a>
+                <a href="https://www.awin.com/gb" target="_blank" class="btn btn-secondary">
+                    AWIN Dashboard →
+                </a>
+                <a href="https://www.google.com/adsense" target="_blank" class="btn btn-secondary">
+                    AdSense →
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Placeholder: Load real data from GA4/AWIN APIs
+        // For now: Mock data
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('index-coverage').textContent = '94.2%';
+            document.getElementById('crawl-errors').textContent = '3';
+            document.getElementById('organic-sessions').textContent = '12.4K';
+            document.getElementById('avg-ctr').textContent = '4.8%';
+
+            document.getElementById('affiliate-clicks').textContent = '487';
+            document.getElementById('epc').textContent = '€0.42';
+            document.getElementById('affiliate-revenue').textContent = '€3,821';
+            document.getElementById('conversion-rate').textContent = '2.8%';
+
+            document.getElementById('adsense-rpm').textContent = '€2.76';
+            document.getElementById('adsense-ctr').textContent = '0.9%';
+            document.getElementById('consent-rate').textContent = '68%';
+            document.getElementById('adsense-earnings').textContent = '€842';
+
+            document.getElementById('b2b-leads').textContent = '14';
+            document.getElementById('lead-quality').textContent = '57%';
+            document.getElementById('b2b-revenue').textContent = '€6,500';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "zentra-services",
+  "version": "1.0.0",
+  "description": "Zentra Services Static Site",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "verify:secrets": "bash validate_security.sh"
+  },
+  "author": "BMS Digital Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.0.0"
+  }
+}

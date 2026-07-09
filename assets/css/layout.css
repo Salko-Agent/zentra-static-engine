@@ -1,0 +1,191 @@
+/* File: layout.css */
+
+/* --- RESET --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- UTILITY CLASSES --- */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+/* --- TYPOGRAPHY UTILS --- */
+.gradient-text {
+    background: linear-gradient(90deg, var(--accent-cyan), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 3.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.5rem;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-cyan {
+    color: var(--accent-cyan);
+}
+
+/* --- GRID SYSTEM (The "Holo-Deck") --- */
+.bento-grid {
+    display: grid;
+    gap: var(--grid-gap);
+    background: var(--border-glass);
+    /* The gap color */
+    border: 1px solid var(--border-glass);
+    padding: 1px;
+    /* To show border */
+}
+
+.bento-cell {
+    background: var(--bg-panel);
+    padding: 24px;
+}
+
+/* --- RESPONSIVE MOBILE STYLES --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .hidden-mobile {
+        display: none !important;
+    }
+
+    .flex-between {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
